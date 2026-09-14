@@ -81,8 +81,8 @@ The script is what this team actually produces, so it does the whole job.
 - Write to the number rather than trimming afterwards.
 - **Length is fixed by rewriting, never by speed.** Speed is a locked character setting.
 - **Every full stop costs about 0.7s.** Short sentences read slower than they look.
-- **Write for the ear.** Numbers spoken aloud need their unit. Parentheses, em-dashes and
-  colons do not survive a read — restructure instead.
+- **Write for the ear.** Parentheses and colons do not survive a read — restructure
+  instead. Numbers stay as digits in the script; the voice reads them.
 - **No stage directions in the script.** Everything in the script field gets spoken.
   Camera notes and on-screen text cues live in the piece file.
 - **No pause tags.** Pacing comes from punctuation and the scene break.
@@ -96,17 +96,20 @@ Studio is where rendering happens. Do not re-derive them from an API render.
 He code-switches — English inside a Gujarati read — and **one Gujarati voice carries
 both**. Every English word is said by that voice.
 
-In Studio, use HeyGen's **Brand Glossary** feature to fix recurring brand names, project
-names and business terms. It changes spoken audio only; captions keep normal spelling.
-Start with: Shivalik, the project names, RERA, EMI, inventory, capital, demand, crore,
-carpet area.
+**His scripts keep English in Latin script.** Place names, company names and business
+terms are typed as English — `Ahmedabad`, `Kheda`, `Cushman and Wakefield`, `warehouse
+space lease`, `Asset class` — with Gujarati carrying the grammar around them. Numbers are
+digits. That is measured from his production scripts, not inferred.
 
-The fallback for one-offs is transliterating into Gujarati script inside the script text.
-That works and also changes what any generated subtitle says.
+**So pronunciation is fixed in Studio, never in the spelling.** If a term comes out wrong
+in a render, add it to HeyGen's **Brand Glossary**: that changes the spoken audio and
+leaves the script and captions spelled normally. Start with Shivalik, the project names,
+RERA, EMI, and any place name the voice trips on.
 
-Note the operator's actual pattern is **two-tier**: marquee phrases stay in Latin script
-(*Building the world's largest real estate ecosystem*), everyday loanwords go in Gujarati
-script (ઇન્વેસ્ટમેન્ટ, પ્રોજેક્ટ). Match that; do not flatten everything one way.
+**Do not transliterate a word into Gujarati script to force a pronunciation.** It changes
+what the viewer reads as well as what they hear, and it makes the script stop looking like
+something he wrote. See `skills/script-writer/references/formats.md` → *How he actually
+writes it*.
 
 ## What HeyGen is not used for
 

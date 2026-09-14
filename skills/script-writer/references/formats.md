@@ -15,22 +15,51 @@ expected and normal — that is how he actually speaks — but the script is not
 script and it is never an English script translated afterwards. Write it in Gujarati
 from the spine.
 
+### How he actually writes it — measured from his own production scripts
+
+**English stays in Latin script. Numbers stay as digits. Gujarati carries the grammar.**
+
+This is not a style preference, it is what his working HeyGen scripts do:
+
+> છ મહિનામાં **Ahmedabad** ની આસપાસ **1.8 million square feet warehouse space lease** થઈ —
+> **Cushman and Wakefield** નો આંકડો છે. ગયા વર્ષ કરતાં **54%** વધારે. એમાંથી **45%** એકલા
+> **Kheda** એ લીધું. **Changodar 20%**. **Sanand 17%**.
+
 | rule | why |
 |---|---|
-| **Recurring English loanwords go in the brand glossary; one-offs are written in Gujarati script.** | The Gujarati voice mispronounces Latin-script English. A mangled brand name in his own synthesised voice is not a typo. A glossary fixes the spoken audio and leaves captions spelled normally; transliterating changes both. |
-| **Count syllables, not words.** 4.0–5.0 syllables per second at Speed 0.9. Budget at 4.0 against a hard cap: 30s = **120 syllables**. | Word counts do not transfer from the English formats below. |
-| **One paragraph per beat. No pause tags.** | Pause tags do not work in HeyGen, and a connector render has no scenes — pacing comes from punctuation and sentence length. The paragraph break is a writing habit that keeps beats legible. |
+| **English words are written in Latin script, not transliterated.** `warehouse space lease`, `Asset class`, `Tenants`, `market average` — as he types them. Never વેરહાઉસ, never એસેટ ક્લાસ. | This is his demonstrated pattern across production scripts. Transliterating makes it read as someone imitating him. |
+| **Place names, company names and brands stay Latin.** `Ahmedabad`, `Kheda`, `Sanand`, `Swiggy`, `Amazon`, `Voltas Beko`, `Cushman and Wakefield`. | Same reason. He does not transliterate proper nouns. |
+| **Numbers are digits in the script, not words.** `1.8 million`, `54%`, `190,000`, `8 September`. | He writes them as digits and the voice reads them. Do not spell figures out. |
+| **Gujarati carries the grammar** — verbs, connectives, case endings, everything structural: ની આસપાસ, નો આંકડો છે, ગયા વર્ષ કરતાં, એમાંથી, એ લીધું. | Gujarati is the matrix language. English is embedded in it, not the other way round. |
+| **Count syllables, not words.** 4.0–5.0 syllables per second. Budget at 4.0 against a hard cap: 30s = **120 syllables**. Count the English words as spoken syllables too. | Word counts do not transfer from the English formats below. |
+| **One paragraph per beat. No pause tags.** | Pause tags do not work in HeyGen. The paragraph break keeps beats legible. |
 | **The caption is Gujarati too**, with the same code-switching. | Same audience, same voice. A Gujarati Reel under an English caption reads as two people. |
-| **Figures go on screen as digits.** | Readable, and it keeps spoken numbers out of the mouth where they are easiest to get wrong. |
+| **Figures also go on screen as type.** | Reels are watched muted. |
+
+⚠ **Do not "fix" the mixed script.** A draft that looks inconsistent — Latin and Gujarati
+in the same sentence — is correct. Normalising it in either direction is the most common
+way to make a script stop sounding like him.
+
+**Pronunciation is handled in Studio, not in the spelling.** If a specific English term
+comes out wrong in the render, fix it with a HeyGen **Brand Glossary** entry — which
+changes the spoken audio and leaves the script and captions spelled normally. Do not
+transliterate a word into Gujarati script to force a pronunciation; that changes what the
+viewer reads as well as what they hear.
 
 The brand line stays in English where the operator has settled it that way — check
 `brand/brand-config.md` → `## Language` before changing any fixed wording.
 
-⚠ **There is no Gujarati corpus yet.** `brand/voice-profile.md` is measured from English
-LinkedIn and X posts only, so it cannot tell you how he sounds in Gujarati. The banned
-phrases in `voice-rules.md` are English and do not transfer. Until Gujarati Reels or
-transcripts land in `sources/corpus/`, treat Gujarati voice as **unmeasured** and say so
-when handing a script over.
+⚠ **The Gujarati corpus is thin.** `brand/voice-profile.md` is measured from English
+LinkedIn and X posts, so it cannot tell you how he sounds in Gujarati. The banned phrases
+in `voice-rules.md` are English and do not transfer.
+
+What *is* available: his **production HeyGen scripts**, which are real Gujarati written by
+him. The code-switching rules above are measured from those, and they are the strongest
+Gujarati signal in the system. Pull more of them into `sources/corpus/` as they are
+written — each one narrows the gap.
+
+Until that corpus is real, say when handing a script over that the Gujarati **phrasing**
+is inferred, even though the code-switching pattern is measured.
 
 | beat | seconds | job |
 |---|---|---|
@@ -44,22 +73,23 @@ Write it as spoken lines, one per line, in the operator's speaking rhythm — no
 prose to be read aloud. Mark on-screen text separately:
 
 ```
-[0:00] SAY: અમદાવાદમાં આજે સાડત્રીસ ટકા ઇન્વેન્ટરી ખાલી પડી છે.
-       TEXT: 37%
-[0:04] SAY: આ ડિમાન્ડનો પ્રોબ્લેમ નથી. આ કેપિટલનો પ્રોબ્લેમ છે.
-       TEXT: ડિમાન્ડ નહીં — કેપિટલ
+[0:00] SAY: છ મહિનામાં Ahmedabad ની આસપાસ 1.8 million square feet warehouse space
+            lease થઈ — Cushman and Wakefield નો આંકડો છે.
+       TEXT: 1.8M sq ft
+[0:07] SAY: ગયા વર્ષ કરતાં 54% વધારે. એમાંથી 45% એકલા Kheda એ લીધું.
+       TEXT: Kheda 45%
 ```
 
-Read what that example is doing, because it is the whole rule in four lines:
+That is lifted from his own production script. Read what it is doing:
 
-- **The spine is Gujarati.** Not an English sentence with Gujarati words dropped in.
-- **The English loanwords are in Gujarati script** — ઇન્વેન્ટરી, ડિમાન્ડ, કેપિટલ, પ્રોબ્લેમ.
-  That is the code-switching he actually speaks, written so the voice says it correctly.
-  Latin-script `inventory` in the same slot comes out mangled.
-- **The figure is spoken in words** (સાડત્રીસ ટકા) and shown on screen as `37%`. Reels are
-  watched muted, and a spoken number is the easiest thing to get wrong.
-- **The on-screen text is Gujarati too.** An English card over a Gujarati read is two
-  people talking.
+- **Gujarati is the matrix language.** છ મહિનામાં, ની આસપાસ, થઈ, નો આંકડો છે, ગયા વર્ષ કરતાં,
+  એમાંથી, એકલા, એ લીધું — all the structure is Gujarati.
+- **English sits inside it, in Latin script.** `warehouse space lease`, `Cushman and
+  Wakefield`, `Kheda`. Not transliterated. This is the single most important rule and the
+  easiest to get wrong.
+- **Numbers are digits.** `1.8 million`, `54%`, `45%`. Written as digits, read aloud by
+  the voice.
+- **On-screen text is short and can be English.** It is a card, not a sentence.
 
 Add a `B-ROLL:` note only where a specific shot is needed. No "hey guys", no
 logo intro, no "make sure to follow" mid-script.
@@ -70,8 +100,8 @@ Instagram ships **three complete Reel scripts** — A data-led, B correction, C
 observation — per `variants.md`. Each one carries:
 
 1. **The spoken script**, timed to beats. This is what the HeyGen avatar says verbatim,
-   so it obeys the pacing rules: ~20–23 words per 10 seconds, numbers spoken in words,
-   no stage directions inside the spoken lines.
+   so it obeys the rules above: Gujarati grammar, English in Latin script, numbers as
+   digits, no stage directions inside the spoken lines.
 2. **The on-screen text plan**, one cue per beat. Put every **figure** here rather than
    only in the mouth — a number is safer read than heard, and Reels are watched muted.
 3. **Its own caption.** Not shared, not copied across the three. The caption's first line
