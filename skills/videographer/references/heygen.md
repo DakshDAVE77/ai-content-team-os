@@ -55,16 +55,33 @@ is what the person at the keyboard follows.
 
 ```
 RENDER IN HEYGEN STUDIO
-avatar:      Chitrak Shah -- 5
-voice:       CS-7_voice
-engine:      Cartesia · model Sonic 3.6
-speed:       <the locked value from brand/avatar-motion.md>
-motion:      paste the custom-motion block verbatim, every scene
-aspect:      9:16
-script:      <the approved script, verbatim - do not edit in Studio>
+avatar:        <look name from brand/avatar-motion.md>
+voice:         <voice label>
+Voice Engine:  <e.g. Cartesia>      ← CHECK THE DROPDOWN BEFORE GENERATE
+Model:         <e.g. Sonic 3.6>     ← CHECK THE DROPDOWN BEFORE GENERATE
+Speed:         <locked value>        ← RE-SET ON EVERY SCENE
+motion:        paste the custom-motion block verbatim, EVERY scene
+aspect:        9:16
+script:        <the approved script, verbatim - do not edit in Studio>
 ```
 
-Two Studio behaviours that bite, and both are app-side, not API:
+The two dropdown lines are not decoration. See below.
+
+### Before clicking Generate — check the voice engine
+
+**Open the Edit Voice panel and read the two dropdowns.** They must say exactly what
+`brand/avatar-motion.md` records — for this account, **Voice Engine: Cartesia** and
+**Model: Sonic 3.6**.
+
+This is the single most common way a render comes out wrong. Studio will happily assign a
+different engine — ElevenLabs is a frequent default — to the *same* voice. The voice name
+in the panel still reads correctly, the avatar is right, the script is right, and the
+output is a different person's delivery. Nothing in the render log flags it.
+
+If the dropdowns are wrong: set them, then click **Update default settings** so the voice
+keeps that engine for future scenes.
+
+Two more Studio behaviours that bite, all app-side, none of them API:
 
 - **Speed resets on every scene.** Re-set it on each one and confirm on the preview. A
   scene left at default is a different man talking in the middle of his own video.

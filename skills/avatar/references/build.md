@@ -68,27 +68,31 @@ confirmed on: <date>
 
 ## Ids
 group_id: <id from list_avatar_groups, ownership: "private">
-avatar_id: <the LOOK id from list_avatar_looks - this is what avatarId takes>
-look type: <digital_twin | photo_avatar> · engine: <avatar_v | avatar_iv>
+avatar_id: <the LOOK id from list_avatar_looks>
+look name: <exactly as it appears in Studio, e.g. Chitrak Shah -- 5>
+look type: <digital_twin | photo_avatar>
 verified on: <date the ids were last confirmed to resolve>
 
 ## Script approval
 approver: <who the operator named - commonly a social media manager>
 sign-in identity: <email or handle, or: none recorded - clicks are logged, not checked>
 
-## Voice
+## Voice — read these off HeyGen Studio, Edit Voice panel
 voice_id: <id from list_voices, type: "private">
-voice label: <the name shown in HeyGen>
-engine: <starfish | elevenlabs | fish>
-model: <only if the engine takes one, e.g. eleven_multilingual_v2>
-speed: <n>            # passed as voiceSettings.speed, clamped 0.5-1.5
-pitch: <n>            # passed as voiceSettings.pitch, default 0
-locale: <e.g. en-IN>  # only if the voice is multi-lingual
+voice label: <the name shown in HeyGen, e.g. CS-7_voice>
+Voice Engine: <exactly what the Edit Voice dropdown says, e.g. Cartesia>
+Model: <exactly what the Model dropdown says, e.g. Sonic 3.6>
+Speed: <the slider value>
+Volume: <the slider value>
 brand_glossary_id: <id, or: none yet>
 
-## Motion
-Passed verbatim as `motionPrompt`. Requires engine { type: "avatar_v" } on a
-digital twin — on the default Avatar IV engine this field is rejected.
+⚠ Record what Studio actually shows. Do NOT record an engine from the API's
+list — the API offers only starfish / elevenlabs / fish, none of which may be
+the engine this voice really uses. Recording an API engine name here is how a
+founder's voice silently becomes a different one.
+
+## Motion — Studio, Scene → Set Motion Style → Apply custom motion
+Pasted verbatim on EVERY scene. Speed re-set on EVERY scene.
 
 More expressive motion: OFF
 Expression tags in use: Calm · Confident · Sincere · Warm
@@ -159,14 +163,20 @@ evidence. Emit this instead:
 
 ```
 RENDER IN HEYGEN STUDIO
-avatar:      <look name>            (avatar_id <id>, verify it still resolves)
-voice:       <voice name>           (voice_id <id>)
-engine:      Cartesia · model <model>
-speed:       <locked>               re-set on EVERY scene
-motion:      paste the block verbatim, EVERY scene
-aspect:      9:16
-script:      <the approved text, verbatim - not edited in Studio>
+avatar:        <look name>          (avatar_id <id>, verify it still resolves)
+voice:         <voice label>        (voice_id <id>)
+Voice Engine:  <as recorded>        ← OPEN Edit Voice AND CHECK THE DROPDOWN
+Model:         <as recorded>        ← OPEN Edit Voice AND CHECK THE DROPDOWN
+Speed:         <locked>             re-set on EVERY scene
+motion:        paste the block verbatim, EVERY scene
+aspect:        9:16
+script:        <the approved text, verbatim - not edited in Studio>
 ```
+
+**The engine check is not optional.** Studio can assign a different engine to the same
+voice — the voice name still looks right and the output is a different delivery. Read both
+dropdowns against `brand/avatar-motion.md` before Generate, and hit **Update default
+settings** if you had to change them.
 
 Verify first, with the read-only tools: `get_current_user` for credits,
 `list_avatar_looks` and `list_voices` to confirm both ids still resolve. If either has

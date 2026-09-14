@@ -40,7 +40,14 @@ REQUIRED = {
     "skills/avatar/references/build.md": [
         "RENDER IN HEYGEN STUDIO",
         "Starfish",
+        "CHECK THE DROPDOWN",
     ],
+}
+
+# The motion-file TEMPLATE must not offer API engine names as the voice engine.
+# Recording "elevenlabs" there is how a founder's voice silently changes engine.
+TEMPLATE_BANNED = {
+    "skills/avatar/references/build.md": ["engine: <starfish"],
 }
 
 # Generation tools. Allowed only in files that explain why they are NOT used.
@@ -79,6 +86,15 @@ def main():
                         "%s mentions %s - renders belong in Studio, not the API"
                         % (rel, name)
                     )
+
+    for rel, phrases in TEMPLATE_BANNED.items():
+        text = (ROOT / rel).read_text(encoding="utf-8")
+        for phrase in phrases:
+            if phrase in text:
+                errors.append(
+                    "%s offers API engine names in the motion template (%r) - "
+                    "the voice engine is read off HeyGen Studio" % (rel, phrase)
+                )
 
     for rel, needles in REQUIRED.items():
         path = ROOT / rel
