@@ -9,6 +9,32 @@ available from the same pieces.
 
 ---
 
+## Install
+
+```
+/plugin marketplace add DakshDAVE77/ai-content-team-os
+/plugin install ai-content-team-os@cs-content
+```
+
+## Update
+
+Pull whatever is on `main` — no reinstall, no re-registering:
+
+```
+/plugin marketplace update cs-content
+```
+
+That is the whole point of installing from GitHub rather than a local folder: push a
+change here, run that one command wherever the plugin is installed, and every machine is
+on the same version.
+
+**Operator data does not live in this repo.** `brand/`, `sources/`, `content/`,
+`performance/` and `state/` are created by `brand-setup` inside a folder you connect, and
+they hold the things that are yours — voice profile, proof, avatar and voice ids,
+corpus. Updating the plugin never touches them. See `references/memory-map.md`.
+
+---
+
 ## The one command
 
 Say **"run the content engine"**. It researches the day, then publishes one artifact:
