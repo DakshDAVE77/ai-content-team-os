@@ -78,12 +78,19 @@ once, and nothing is recorded as published without a live URL read from the page
 ## The Instagram button is different, on purpose
 
 Every Instagram option shows the full Reel script, so picking one means approving the
-words. That button therefore says **POST — generates the Reel**, and clicking it:
+words. That button says **POST — approves the script**, and clicking it:
 
-1. sends that variant's script to HeyGen, with your locked voice, speed and motion block
-2. renders at 9:16 and downloads the file
-3. shows you the clip in the console
+1. records the pick, with who approved it and when
+2. shows the **render spec** — your avatar, your voice, Cartesia, the speed and motion
+   block, 9:16 — to carry into HeyGen Studio
+3. waits while a human renders it there and drops the file back
 4. posts it as a Reel with **that variant's** caption when you tap once
+
+**Why a human renders.** Your voice is a Cartesia voice, and HeyGen's API can only
+synthesise through Starfish. An API render comes back as the right voice identity in the
+wrong engine — near-identical length, audibly not you. One click in Studio is a smaller
+cost than publishing a face and voice that are nearly yours. LinkedIn and X stay fully
+automatic; they are text.
 
 Two things are deliberate. **The console records who pressed the button** — you decide
 once who may approve wording for your avatar, commonly your social media manager, and

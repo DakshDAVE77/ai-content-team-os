@@ -74,15 +74,14 @@ failed.
    check the click against it and say so if it does not match — but **do not refuse the
    render for identity alone.** The approver is whoever the operator named, commonly a
    social media manager.
-2. **Hand the script to `avatar`.** Never call the generation tool from here — same rule
-   that binds `videographer`. `avatar` reads the locked ids, voice, speed and verbatim
-   motion block from `brand/avatar-motion.md` and generates, setting `aspectRatio: "9:16"`
-   and `engine: { type: "avatar_v" }`. Set `status: "generating"` first.
-3. **Check the file before anyone sees it.** Aspect ratio is 9:16. `avatar` sets
-   `aspectRatio: "9:16"` on the call, so a correct render needs no crop — but an
-   unattended chain is exactly where a 16:9 file reaches a Reel slot, so confirm it
-   rather than assume it. If it did come back landscape the parameter was dropped:
-   crop to 1080×1920, say that you did, and say the field was missing.
+2. **Hand the script to `avatar` for a render spec.** Never call a generation tool from
+   here — and note there is no generation tool to call: his Cartesia voice only exists in
+   HeyGen Studio. `avatar` reads the locked values from `brand/avatar-motion.md` and emits
+   the spec. Set `status: "awaiting_render"` and surface the spec in the console.
+3. **Wait for the rendered file.** A human renders in Studio and drops the file back —
+   this step is not automated and must not be faked. Confirm it exists, confirm 9:16, and
+   confirm the duration is inside the slot. A landscape file means the Studio aspect was
+   wrong: crop to 1080×1920 and say that you did.
 4. **Download it to the operator's machine.** The Instagram web uploader takes a local
    file; a HeyGen URL is not one.
 5. **Write `status: "rendered"` with `videoUrl`, and stop.** He watches it in the console

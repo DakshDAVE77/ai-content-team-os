@@ -14,7 +14,7 @@ at all.
 | Category | Placeholder | Options | What it unlocks |
 |---|---|---|---|
 | Browser automation | `~~browser` | Claude in Chrome, the built-in browser | Live social listening; mining your own Instagram comments for ideas; reading your own analytics pages |
-| Video generation | `~~video generation` | **HeyGen** — an avatar video tool, not a generative one | Presenter Reels: the operator on screen, in his own voice |
+| Video generation | `~~video generation` | **HeyGen** | Verifying avatar and voice ids, credits, and reading back finished renders. **Rendering itself happens in HeyGen Studio, by a human** — see below |
 | Scheduler / posting | `~~scheduler` | n8n, Zapier, Buffer, a platform API | Posting from a packaged slate instead of copy-paste |
 | Email | `~~email` | Gmail, Outlook, any mail connector | Confirmation to the operator when a post goes live |
 | Analytics | `~~analytics` | A platform API, or a warehouse connector | Automatic performance logging instead of pasted exports |
@@ -28,17 +28,18 @@ your actual audience rather than a proxy for it. Note that it works in
 interactive sessions only; a scheduled run cannot reach a browser at all.
 
 **`~~video generation`** — `skills/videographer/references/heygen.md` documents HeyGen
-specifically: the seven tools this team calls, the limits, and how everything else is
+specifically: the five tools this team calls, the limits, and how everything else is
 routed away.
 
-What this team uses it for is **one** thing — the operator on screen, speaking, from an
+What this team uses HeyGen for is **one** thing — the operator on screen, speaking, from an
 avatar and voice already built and consented to inside HeyGen. It does not produce
 atmosphere, stock footage, images or thumbnails, and nothing here expects it to.
 
 The official connector is large — around 150 tools, including voice cloning, avatar
-creation, translation, lipsync and templates. **This team calls seven of them.** That is
-scope, not a limitation: the gates in `skills/avatar/SKILL.md` are what keep a founder's
-face and voice under his own control, and they do not relax because a tool exists.
+creation, translation, lipsync and templates. **This team calls five of them, and none
+of them generate.** That is scope plus one hard constraint: the gates in
+`skills/avatar/SKILL.md` keep a founder's face and voice under his own control, and the
+Cartesia limitation below keeps his voice actually his.
 
 ⚠ **If you connected the older community HeyGen MCP server**, its tool names
 (`generate_avatar_video`, `get_voices`, `get_remaining_credits` and the rest) do not
@@ -51,11 +52,15 @@ Two consequences worth knowing before you connect it:
 - **B-roll is filmed, not generated.** Pieces that need atmosphere get a shot list — one
   prompt-shaped line per beat — to film, pull from the archive, or buy as stock.
 
-The connector alone is not enough to produce a presenter Reel. It also needs a confirmed
-`avatar_id` and `voice_id` in `brand/avatar-motion.md`, and an approver's sign-off on the
-exact wording — see `skills/avatar/SKILL.md`. The consent basis comes from HeyGen's own
-on-camera recording, which it requires before building a twin at all; this team does not
-ask for it twice.
+**The connector does not render presenter Reels, and is not expected to.** The operator's
+voice is a Cartesia voice, and HeyGen's API synthesises only through Starfish — so an API
+render returns the right voice identity in the wrong engine. Renders happen in HeyGen
+Studio, by a human, from a spec this team produces. The connector is used to verify ids
+still resolve and to read back a finished video. See
+`skills/videographer/references/heygen.md` → *Why the API does not render*.
+
+The consent basis comes from HeyGen's own on-camera recording, which it requires before
+building a twin at all; this team does not ask for it twice.
 
 **`~~analytics`** — read the hard limit in `skills/analyst/SKILL.md` first. No
 analytics API returns *who* engaged, only how many. If your brand config ranks on

@@ -150,35 +150,34 @@ Three things are the ones actually got wrong in practice:
 `More expressive motion` stays **OFF**. Expression tags stay inside the persona — Calm,
 Confident, Sincere, Warm. Never Enthusiastic; it contradicts the block.
 
-## Generating
+## Handing over for render
+
+**Nothing here calls a generation tool.** His voice is a Cartesia voice and HeyGen's API
+synthesises only through Starfish, so an API render returns the right voice identity in
+the wrong engine. `references/heygen.md` → *Why the API does not render* carries the
+evidence. Emit this instead:
 
 ```
-get_current_user                       # remaining credits, before anything
-create_video_from_avatar(
-  avatarId:        <locked>
-  voiceId:         <locked>
-  script:          <the approved text, verbatim>
-  aspectRatio:     "9:16"
-  engine:          { type: "avatar_v" }
-  motionPrompt:    <the verbatim block>
-  voiceSettings:   { speed: <locked>, pitch: <locked> }
-  brandGlossaryId: <if one exists>
-  title:           "<slug> - <variant>"
-)                                      # returns video_id
-show_video(video_id)                   # interactive: self-updating player
-get_video(video_id)                    # unattended: poll until complete
+RENDER IN HEYGEN STUDIO
+avatar:      <look name>            (avatar_id <id>, verify it still resolves)
+voice:       <voice name>           (voice_id <id>)
+engine:      Cartesia · model <model>
+speed:       <locked>               re-set on EVERY scene
+motion:      paste the block verbatim, EVERY scene
+aspect:      9:16
+script:      <the approved text, verbatim - not edited in Studio>
 ```
 
-Then download the result and watch it.
+Verify first, with the read-only tools: `get_current_user` for credits,
+`list_avatar_looks` and `list_voices` to confirm both ids still resolve. If either has
+stopped resolving, stop and say so — do not let someone pick the nearest match in Studio.
 
-**Aspect ratio is settled.** Reels need 9:16 and `aspectRatio: "9:16"` delivers it. The
-default is 16:9, so the field is never omitted. **No cropping step is needed any more** —
-a landscape file reaching a vertical slot now means the parameter was left out, not that
-the tool could not do it.
+**Afterwards.** When the file comes back, watch it end to end, confirm 9:16, then use
+`get_video` to capture the HeyGen video id, URL and duration for the record.
 
-**Cost.** `get_current_user` before a run. Billing is by output duration, so the saving is
-made in the script — cut the read, then generate once. Three regenerations to fix one line
-is the expensive mistake.
+**Cost.** Billing is by output duration, so the saving is made in the script — cut the
+read before it reaches Studio. Three re-renders to fix one line is the expensive mistake,
+and it is more expensive now because a human does each one.
 
 ## Writing what he says
 

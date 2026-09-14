@@ -8,11 +8,13 @@ description: Produce on-screen presenter video and cloned-voice narration of the
 Generate video and audio of **the operator themselves** — their face on screen, their
 voice speaking — from the avatar and voice already built and fine-tuned in **HeyGen**.
 
-This is the one skill in this team that synthesises a real, named person, and the only
-one that may call the generation tool. It is a legitimate and ordinary thing for a
-company to do with its own founder, and it is also the capability that produces
-deepfakes. The difference is entirely consent and control, so both are enforced here
-rather than assumed.
+This is the one skill in this team that produces a real, named person's likeness and
+voice. It is a legitimate and ordinary thing for a company to do with its own founder,
+and it is also the capability that produces deepfakes. The difference is entirely consent
+and control, so both are enforced here rather than assumed.
+
+**It does not render.** It writes the approved script and the Studio render spec; a human
+renders in HeyGen Studio, because that is the only place his Cartesia voice exists.
 
 Two things about the HeyGen setup change the shape of this job, and both cut the same
 way:
@@ -24,7 +26,8 @@ way:
   record; this team does neither, and that is a rule here rather than a missing tool.
 - **The script is the payload.** HeyGen takes text and speaks it. There is no prompt
   standing between the approved wording and what comes out of his mouth, which makes
-  Gate 2 below the whole of the job rather than a precaution around it.
+  Gate 2 below the whole of the job rather than a precaution around it. It also means the
+  script is this skill's actual deliverable — get it right and the render is mechanical.
 
 Read `${CLAUDE_PLUGIN_ROOT}/skills/avatar/references/build.md` for the mechanics.
 
@@ -72,14 +75,14 @@ So: **the avatar speaks only wording an approver has signed off**, quoted in the
 file with the date and who approved it. Not an unreviewed draft this team wrote.
 
 **A console POST click satisfies this**, under two conditions: the Instagram option
-displayed the full script verbatim on the page, and the button said it generates the
-Reel. Then the click is a better record than any chat log — someone read those exact
+displayed the full script verbatim on the page, and the button said it approves the
+script. Then the click is a better record than any chat log — someone read those exact
 words and pressed the button beside them, with a timestamp.
 
 Record `requestedBy` on every click. If an approver identity is recorded in
 `brand/avatar-motion.md`, check the click against it; if none is recorded, any signed-in
-viewer's click counts and the identity is captured for the audit trail. **Do not refuse a
-render for identity alone.**
+viewer's click counts and the identity is captured for the audit trail. **Do not refuse on
+identity alone.**
 
 Refuse, and say why, when asked to have the avatar deliver:
 
@@ -108,9 +111,16 @@ version was real.
 
 | Deliverable | How |
 |---|---|
-| **Presenter Reel** — him on screen delivering the argument | `create_video_from_avatar` with the locked `avatarId`, locked `voiceId`, the approved script, `aspectRatio: "9:16"` and `engine: { type: "avatar_v" }`. The default format now. |
-| **Presenter segment** — a talking-head beat inside a longer piece | Same call, cut to the beat's length. Length is set by rewriting the script, never by stretching. |
-| **Voice-forward piece** — his voice carrying stills or type | Same call; the video is generated and the face is dropped in the edit. HeyGen has no audio-only tool. |
+| **Presenter Reel** — him on screen delivering the argument | An approved script plus a **Studio render spec**. A human renders it in HeyGen Studio. The default format. |
+| **Presenter segment** — a talking-head beat inside a longer piece | Same, cut to the beat's length. Length is set by rewriting the script, never by stretching. |
+| **Voice-forward piece** — his voice carrying stills or type | Same; the face is dropped in the edit afterwards. |
+
+**This skill does not render.** It produces the script and the spec; the render happens in
+HeyGen Studio because that is the only place his Cartesia voice exists. The API's
+text-to-speech is Starfish-only and produces the right voice *identity* in the wrong
+engine — close enough to pass a duration check, not close enough to be him. See
+`${CLAUDE_PLUGIN_ROOT}/skills/videographer/references/heygen.md` → *Why the API does not
+render*. That is settled; do not re-litigate it with another test render.
 
 **What this skill will not do, whatever the connector offers:** create a voice, create an
 avatar, or record a consent statement. `clone_voice`, `design_voice`, `create_photo_avatar`,
@@ -126,41 +136,42 @@ something he commissions, never something this skill runs to save a render.
 
 ## Method
 
-1. **Check both gates.** Authorization file, then approved script. Neither is a
-   formality; a missing one stops the job.
-2. **Read the locked ids and the locked delivery, do not choose either.** `avatarId`,
-   `voiceId`, engine, speed and the verbatim motion block all come from
-   `brand/avatar-motion.md`. Every run. The
+1. **Check both gates.** Consent basis, then approved script. Neither is a formality.
+2. **Read the locked values, do not choose any of them.** Avatar, voice, engine, speed
+   and the verbatim motion block all come from `brand/avatar-motion.md`. Every run. The
    discovery tools exist to verify an id still resolves, not to pick one. An account can
    hold several versions of the same person; choosing whichever sorted first is how his
    account starts looking and sounding like two slightly different men. If a recorded id
    stops resolving, stop and say so — never substitute the nearest match.
-3. **Set the three fields that silently fail.** `aspectRatio: "9:16"` — the default is
-   16:9. `engine: { type: "avatar_v" }` — without it `motionPrompt` is *rejected* on a
-   digital twin and the motion block never applies. `voiceSettings.speed` — the locked
-   value, on every call. Through the connector there are no scenes, so each of these is
-   set once per render rather than per scene; the per-scene resets are a HeyGen *web app*
-   behaviour and only bite when he works there.
-4. **Write the script to be spoken.** Everything in `script` gets said aloud, so no
-   stage directions, and numbers in words. Roughly 20–23 words per 10 seconds. Cut to
-   length before generating: HeyGen bills by output seconds, so a shorter read is both
-   better and cheaper.
-5. **Watch every output before delivering it.** Lip sync drift, a wrong emphasis, a
-   number said incorrectly, a blink cadence that reads as off, teeth showing, hands
-   raised above the lap, a render at the wrong speed. The motion block names each of
-   those as out of character — check against it, not against taste. This is the operator's
-   face — a defect here costs more than a bad crop ever did. Check the aspect ratio
-   matches the slot.
-6. **Record it** per Gate 3, with the video id, so any clip can be traced back to the
-   script it was approved against.
+3. **Write the script to be spoken.** Everything in the script field gets said aloud, so
+   no stage directions, and numbers in words. English at 20–23 words per 10 seconds,
+   Gujarati at 4.0 syllables per second against a hard cap. Cut to length *before* it
+   reaches Studio — rendering is billed by output seconds and re-rendering to fix a line
+   is the expensive mistake.
+4. **Emit the render spec**, exactly as laid out in `references/heygen.md` → *The render
+   spec*: avatar, voice, engine, model, speed, motion block, 9:16, and the script
+   verbatim. Put it in the piece file and in the console. It is the instruction sheet for
+   whoever sits down in Studio.
+5. **Say the two Studio traps out loud in the handover.** Speed resets on every scene and
+   has to be re-set; the motion block is pasted verbatim on every scene. Both are how a
+   render comes back sounding and moving like a different person.
+6. **When the file comes back, watch it end to end before it goes anywhere.** Lip sync
+   drift, a wrong emphasis, a number said incorrectly, blink cadence, teeth showing, hands
+   above the lap, a scene at the wrong speed. The motion block names each of those as out
+   of character — check against it, not against taste. Confirm 9:16.
+7. **Record it** per Gate 3, with the HeyGen video id, so any clip traces back to the
+   script it was approved against. `get_video` will give you the id, URL and duration.
 
 ## Never
 
 - Generate an avatar or voice that is not the operator's own.
 - Choose a voice, engine or speed instead of reading `brand/avatar-motion.md`.
-- **Omit `voiceId`.** Left out, HeyGen falls back to the avatar look's default voice,
-  which is not necessarily the operator's cloned one — on some looks it is a different
-  language entirely. The locked `voice_id` is passed explicitly on every single render.
+- **Render through the API.** `create_video_from_avatar`, `create_video_from_studio`,
+  `create_speech`, `generate_from_template`, `create_video_agent` — all of them synthesise
+  through Starfish, not his Cartesia voice. A clip from any of them is not him.
+- **Substitute a different voice because the right one is inconvenient.** The voice named
+  in `brand/avatar-motion.md` is compulsory. If it cannot be used, the answer is that the
+  Reel is not rendered yet — not that it is rendered differently.
 - Shorten, summarise or reword the motion block because the script is short.
 - Omit `engine: { type: "avatar_v" }` and assume the motion block applied anyway.
 - Omit `aspectRatio` and hand a landscape render into a Reel slot.

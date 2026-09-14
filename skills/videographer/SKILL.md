@@ -39,10 +39,14 @@ enforced in one place, `avatar`, and a second door into the same engine is a doo
 both gates.
 
 So when a piece needs him on screen — which, with HeyGen, is most of them — **this skill
-plans it and `avatar` generates it.** Videographer decides the format, writes the beat
-plan, and hands over a script. Avatar checks the gates and calls the tool. If you find
-yourself about to call `create_video_from_avatar` from here, stop: that call belongs to
-`avatar`.
+plans it and `avatar` owns the handover.** Videographer decides the format, writes the
+beat plan, and hands over a script. Avatar checks the gates, reads the locked values, and
+emits the Studio render spec.
+
+Nothing in this team renders through the API — his voice is a Cartesia voice and the API
+synthesises only through Starfish, so a render from it is not him. If you find yourself
+reaching for any HeyGen generation tool from here, stop twice: the handover belongs to
+`avatar`, and the render belongs to a human in Studio.
 
 The same absolute limit still applies to everyone else. **No likeness or voice of any
 other real person** — a client, a partner, an official, a competitor — under any

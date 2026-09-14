@@ -125,7 +125,14 @@ variant, never shared across the three.** `requestedBy` is the signed-in viewer.
 
 `post-runner` carries `requestedBy` into the piece file. If `brand/avatar-motion.md`
 records an approver identity and the click does not match it, it says so — it does not
-refuse the render.
+refuse.
+
+**The Instagram click does not start a render.** It records the pick and surfaces the
+**render spec** — avatar, voice, engine, speed, motion block, 9:16, script verbatim — for
+someone to carry into HeyGen Studio. Label the button **`POST — approves the script`**, and
+show the spec with a copy action beside it. Status runs
+`queued → awaiting_render → rendered → posted`, and `awaiting_render` is a human step. Do
+not draw a progress bar against something no machine is doing.
 
 ### The rendered state
 
