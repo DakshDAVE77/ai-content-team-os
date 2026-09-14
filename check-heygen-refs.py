@@ -40,7 +40,7 @@ REQUIRED = {
     "skills/avatar/references/build.md": [
         "RENDER IN HEYGEN STUDIO",
         "Starfish",
-        "CHECK THE DROPDOWN",
+        "ALWAYS CARTESIA",
     ],
 }
 
@@ -48,6 +48,14 @@ REQUIRED = {
 # Recording "elevenlabs" there is how a founder's voice silently changes engine.
 TEMPLATE_BANNED = {
     "skills/avatar/references/build.md": ["engine: <starfish"],
+}
+
+# Cartesia / Sonic 3.6 is hardcoded. If these lines go missing or become
+# placeholders, a render silently comes out in whatever engine Studio defaults to.
+ENGINE_HARDCODED = {
+    "skills/avatar/references/build.md": ["Voice Engine: Cartesia", "Model: Sonic 3.6"],
+    "skills/videographer/references/heygen.md": ["Voice Engine:  Cartesia"],
+    "skills/post-runner/references/heygen-studio.md": ["**Cartesia**", "Sonic 3.6"],
 }
 
 # Generation tools. Allowed only in files that explain why they are NOT used.
@@ -94,6 +102,14 @@ def main():
                 errors.append(
                     "%s offers API engine names in the motion template (%r) - "
                     "the voice engine is read off HeyGen Studio" % (rel, phrase)
+                )
+
+    for rel, phrases in ENGINE_HARDCODED.items():
+        text = (ROOT / rel).read_text(encoding="utf-8")
+        for phrase in phrases:
+            if phrase not in text:
+                errors.append(
+                    "%s no longer hardcodes the voice engine (%r missing)" % (rel, phrase)
                 )
 
     for rel, needles in REQUIRED.items():

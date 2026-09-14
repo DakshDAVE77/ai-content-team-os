@@ -35,14 +35,18 @@ One scene per beat. Use **+ Add scene** for each beat rather than one long scene
 
 **5. ⚠ Set the voice engine. This is the step that keeps going wrong.**
 
-Open **Edit Voice** and check all four controls against `brand/avatar-motion.md`:
+Open **Edit Voice** and set all four controls:
 
 | Control | Set to |
 |---|---|
-| Voice (name at the top) | the locked voice label |
-| **Voice Engine** dropdown | **the locked engine** |
-| **Model** dropdown | the locked model |
-| Speed slider | the locked value |
+| Voice (name at the top) | the locked voice label from `brand/avatar-motion.md` |
+| **Voice Engine** dropdown | **Cartesia** — always, no exceptions |
+| **Model** dropdown | **Sonic 3.6** |
+| Speed slider | the locked value from `brand/avatar-motion.md` |
+
+**Voice Engine is Cartesia. It is not a variable and it is not read from anywhere.** If
+the dropdown shows ElevenLabs, Fish, Starfish or anything else, change it to Cartesia
+before doing anything else.
 
 Studio can assign a different engine to the same voice. When it does, the voice name still
 reads correctly and the output is a different delivery, with nothing to flag it. **Read the

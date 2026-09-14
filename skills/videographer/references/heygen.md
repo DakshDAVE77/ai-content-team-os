@@ -57,8 +57,8 @@ is what the person at the keyboard follows.
 RENDER IN HEYGEN STUDIO
 avatar:        <look name from brand/avatar-motion.md>
 voice:         <voice label>
-Voice Engine:  <e.g. Cartesia>      ← CHECK THE DROPDOWN BEFORE GENERATE
-Model:         <e.g. Sonic 3.6>     ← CHECK THE DROPDOWN BEFORE GENERATE
+Voice Engine:  Cartesia             ← ALWAYS. SET THE DROPDOWN BEFORE GENERATE.
+Model:         Sonic 3.6            ← ALWAYS.
 Speed:         <locked value>        ← RE-SET ON EVERY SCENE
 motion:        paste the custom-motion block verbatim, EVERY scene
 aspect:        9:16
@@ -69,9 +69,9 @@ The two dropdown lines are not decoration. See below.
 
 ### Before clicking Generate — check the voice engine
 
-**Open the Edit Voice panel and read the two dropdowns.** They must say exactly what
-`brand/avatar-motion.md` records — for this account, **Voice Engine: Cartesia** and
-**Model: Sonic 3.6**.
+**Open the Edit Voice panel and set the two dropdowns to Voice Engine: Cartesia and
+Model: Sonic 3.6.** Every render, without exception. This is hardcoded, not configurable
+and not inferred from anything.
 
 This is the single most common way a render comes out wrong. Studio will happily assign a
 different engine — ElevenLabs is a frequent default — to the *same* voice. The voice name

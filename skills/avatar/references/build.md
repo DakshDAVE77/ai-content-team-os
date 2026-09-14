@@ -80,16 +80,15 @@ sign-in identity: <email or handle, or: none recorded - clicks are logged, not c
 ## Voice — read these off HeyGen Studio, Edit Voice panel
 voice_id: <id from list_voices, type: "private">
 voice label: <the name shown in HeyGen, e.g. CS-7_voice>
-Voice Engine: <exactly what the Edit Voice dropdown says, e.g. Cartesia>
-Model: <exactly what the Model dropdown says, e.g. Sonic 3.6>
+Voice Engine: Cartesia          # hardcoded - never changes, never read from the API
+Model: Sonic 3.6                # hardcoded
 Speed: <the slider value>
 Volume: <the slider value>
 brand_glossary_id: <id, or: none yet>
 
-⚠ Record what Studio actually shows. Do NOT record an engine from the API's
-list — the API offers only starfish / elevenlabs / fish, none of which may be
-the engine this voice really uses. Recording an API engine name here is how a
-founder's voice silently becomes a different one.
+⚠ Voice Engine is **Cartesia** and Model is **Sonic 3.6**. Hardcoded. The API's
+engine list (starfish / elevenlabs / fish) is irrelevant here and must never be
+copied into this file — that is how a founder's voice silently changes.
 
 ## Motion — Studio, Scene → Set Motion Style → Apply custom motion
 Pasted verbatim on EVERY scene. Speed re-set on EVERY scene.
@@ -118,10 +117,9 @@ Do this at setup, and again only when an id stops resolving.
 1. `list_avatar_groups` with `ownership: "private"` → find the group holding his avatars.
 2. `list_avatar_looks` with that `groupId`, `ownership: "private"` and
    `avatarType: "digital_twin"` → identify his fine-tuned look. **The look `id` is the
-   `avatarId` you pass when generating** — there is no separate avatar id. If several
-   versions exist, **ask him which one is current.** Do not infer it from the name or the
-   date. Note `supported_api_engines` on the look while you are there; it decides whether
-   `avatar_v` is available, and `avatar_v` is what makes the motion block apply.
+   id you record** — there is no separate avatar id. If several versions exist, **ask him
+   which one is current.** Do not infer it from the name or the date. Record the look
+   **name** too, since that is what you match against in Studio.
 3. `list_voices` with `type: "private"` → find his cloned voice. Page with `token` if it
    is not on the first page. **There is no 100-voice ceiling on this connector** — if his
    voice genuinely does not appear under `type: "private"`, it was not cloned on this
@@ -139,17 +137,16 @@ verbatim motion block. **Read it every run.**
 
 Three things are the ones actually got wrong in practice:
 
-1. **`motionPrompt` silently does nothing on the wrong engine.** For a digital twin it is
-   *rejected* on the default Avatar IV engine — so `engine: { type: "avatar_v" }` goes on
-   every call, and a render that came back with default body language means that field
-   was omitted. For a photo avatar it works on either engine.
-2. **The motion block is passed verbatim.** Not summarised, not shortened for a short
-   script, not reworded to match the line being spoken. It is one fixed block, and its
-   final line is `DO NOT SHOW TEETH`.
-3. **Speed is a request field now, not a per-scene setting.** The HeyGen *web app* resets
-   speed on every scene, which is a real trap when he works there. Through the connector
-   there are no scenes: one `voiceSettings.speed` applies to the whole render. Pass the
-   locked value on every call and never move it to fit a script to a length.
+1. **The Voice Engine dropdown.** It is **Cartesia**, model **Sonic 3.6**, every render.
+   Studio will assign something else — often ElevenLabs — to the same voice, and the
+   voice name still reads correctly while the delivery is a different man. Set it, then
+   hit **Update default settings**.
+2. **The motion block is pasted verbatim, on every scene.** Not summarised, not shortened
+   for a short scene, not reworded to match the line. One fixed block, and its final line
+   is `DO NOT SHOW TEETH`.
+3. **Speed resets on every scene.** Re-set it each time and confirm on the preview. A
+   scene left at default is a different man talking in the middle of his own video. Never
+   move speed to fit a script to a length — rewrite the script instead.
 
 `More expressive motion` stays **OFF**. Expression tags stay inside the persona — Calm,
 Confident, Sincere, Warm. Never Enthusiastic; it contradicts the block.
@@ -165,18 +162,18 @@ evidence. Emit this instead:
 RENDER IN HEYGEN STUDIO
 avatar:        <look name>          (avatar_id <id>, verify it still resolves)
 voice:         <voice label>        (voice_id <id>)
-Voice Engine:  <as recorded>        ← OPEN Edit Voice AND CHECK THE DROPDOWN
-Model:         <as recorded>        ← OPEN Edit Voice AND CHECK THE DROPDOWN
+Voice Engine:  Cartesia             ← SET THIS DROPDOWN. ALWAYS CARTESIA.
+Model:         Sonic 3.6            ← SET THIS DROPDOWN.
 Speed:         <locked>             re-set on EVERY scene
 motion:        paste the block verbatim, EVERY scene
 aspect:        9:16
 script:        <the approved text, verbatim - not edited in Studio>
 ```
 
-**The engine check is not optional.** Studio can assign a different engine to the same
-voice — the voice name still looks right and the output is a different delivery. Read both
-dropdowns against `brand/avatar-motion.md` before Generate, and hit **Update default
-settings** if you had to change them.
+**Voice Engine is always Cartesia, Model always Sonic 3.6.** Studio can assign a
+different engine to the same voice — the voice name still looks right and the output is a
+different delivery. Set both dropdowns before Generate and hit **Update default settings**
+so they stick.
 
 Verify first, with the read-only tools: `get_current_user` for credits,
 `list_avatar_looks` and `list_voices` to confirm both ids still resolve. If either has
