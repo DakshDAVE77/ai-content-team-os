@@ -1,0 +1,15 @@
+{
+  "title": "A Home Is Never Truly Finished",
+  "slides": [
+    { "type": "cover",  "beat": "Truth",         "headline": "A home is never|truly **finished**.",        "subhead": "Construction ends. Life doesn't.",                             "image": "../assets/cover-hero.jpg" },
+    { "type": "body",   "beat": "Context",       "headline": "The real story is just|**beginning**.",       "subhead": "Families grow. Children grow. Dreams grow." },
+    { "type": "body",   "beat": "Tension",       "headline": "Most developers|leave **here**.",             "subhead": "The relationship ends when the handover begins." },
+    { "type": "body",   "beat": "Contradiction", "headline": "Homes need more|than **maintenance**.",       "subhead": "They need care, experiences, connection and|continuous support." },
+    { "type": "body",   "beat": "Question",      "headline": "What if a developer|never **disappeared**?",  "subhead": "What if the journey continued for years, not|months?" },
+    { "type": "body",   "beat": "Pivot",         "headline": "We **stopped**|building projects.",           "subhead": "We started designing lifelong living experiences." },
+    { "type": "body",   "beat": "Model",         "headline": "Every chapter builds|on the **next**.",       "subhead": "Residence → Living → Community → Care" },
+    { "type": "body",   "beat": "Rationale",     "headline": "A better home should|create a better **life**.", "subhead": "Growing identity, health, lifestyle and wealth|together." },
+    { "type": "body",   "beat": "System",        "headline": "Everything works|**together**.",              "subhead": "Complete the home. Simplify life. Build belonging.|Protect value." },
+    { "type": "closer", "beat": "Purpose",       "headline": "Build for everything|that comes **after**.",  "subhead": "Because a home's greatest impact begins after|possession." }
+  ]
+}

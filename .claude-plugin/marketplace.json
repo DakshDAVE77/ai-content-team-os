@@ -1,0 +1,22 @@
+{
+  "name": "cs-content",
+  "owner": {
+    "name": "Daksh Dave"
+  },
+  "metadata": {
+    "description": "Local marketplace for the AI Content Team OS plugin.",
+    "version": "2.4.0"
+  },
+  "plugins": [
+    {
+      "name": "ai-content-team-os",
+      "source": "./",
+      "description": "One command that mines your own Instagram comments for ideas, learns your voice from a corpus of your real posts, researches the day, and publishes one artifact holding nine ready-to-post options - three Instagram with Reel scripts, three LinkedIn, three X - each with a confidence score. Click POST on the one you want, say \"post\", and Claude drives your Chrome to publish it. Runs only when you run it; never on a schedule.",
+      "version": "2.4.0",
+      "author": {
+        "name": "Daksh Dave"
+      },
+      "category": "productivity"
+    }
+  ]
+}

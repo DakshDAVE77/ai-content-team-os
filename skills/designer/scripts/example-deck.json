@@ -1,0 +1,72 @@
+{
+  "preset": "ig-portrait",
+  "brand": {
+    "name": "CONTENT OS",
+    "tagline": "AI CONTENT TEAM",
+    "handle": "@yourhandle",
+    "accent": "#FF6B35",
+    "version": "OS v1.0",
+    "footer": "BUILDING IN PUBLIC_"
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "One creator. Seven employees.",
+      "headline": "I built an|AI content **team**.",
+      "subline": "Seven roles. One operator. The whole pipeline runs before lunch.",
+      "cards": [
+        { "label": "Researcher", "desc": "Finds the trend before it peaks." },
+        { "label": "Hook Writer", "desc": "Stops the scroll in three seconds." },
+        { "label": "Script Writer", "desc": "Turns an idea into a finished script." },
+        { "label": "Designer", "desc": "Renders every slide, on brand." }
+      ]
+    },
+    {
+      "type": "cards",
+      "kicker": "02 — The Researcher",
+      "headline": "It finds every|**viral** opening.",
+      "subline": "Nobody guesses what to post. The idea bank is full before the week starts.",
+      "cards": [
+        { "label": "Tracks competitors", "desc": "Watches the accounts that beat you." },
+        { "label": "Finds trends", "desc": "Spots the pattern before it saturates." },
+        { "label": "Saves references", "desc": "Keeps a file of what already worked." }
+      ],
+      "delivers": ["Trend reports", "Idea bank", "Viral references", "Open niches"],
+      "process": [
+        { "label": "Discover", "desc": "Scan the field" },
+        { "label": "Collect", "desc": "Save the best" },
+        { "label": "Report", "desc": "Hand over ideas" }
+      ]
+    },
+    {
+      "type": "stats",
+      "kicker": "05 — The Analyst",
+      "headline": "It tells me what|**actually** worked.",
+      "stats": [
+        { "label": "Views", "value": "2.4M", "delta": "+152%", "sub": "vs last 7 days" },
+        { "label": "Retention", "value": "68%", "delta": "+12%", "sub": "avg watch 0:32" },
+        { "label": "Saves", "value": "32.7K", "delta": "+210%", "sub": "the real signal" }
+      ],
+      "subline": "Every number points at one decision: make more of this, less of that.",
+      "cards": [
+        { "label": "Finds the winners", "desc": "Ranks every post by saves, not likes." },
+        { "label": "Names the pattern", "desc": "Says why the top three worked." }
+      ],
+      "delivers": ["Weekly readout", "Winner list", "Next-week bets"],
+      "process": ["Track", "Analyse", "Learn", "Optimise"]
+    },
+    {
+      "type": "cta",
+      "headline": "Want the|**whole** system?",
+      "action": "Comment “TEAM”",
+      "subline": "I will send you the complete setup — every role, prompt and automation.",
+      "cards": [
+        { "label": "Full AI system", "desc": "All seven roles, documented." },
+        { "label": "Prompt library", "desc": "Copy, paste, deploy." },
+        { "label": "Automations", "desc": "Every handoff wired up." }
+      ],
+      "note": "One creator. Seven employees. Unlimited output.",
+      "swipe": ""
+    }
+  ]
+}

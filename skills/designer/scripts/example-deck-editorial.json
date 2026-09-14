@@ -1,0 +1,62 @@
+{
+  "preset": "li-portrait",
+  "brand": {
+    "theme": "editorial",
+    "name": "CHITRAK SHAH",
+    "tagline": "SHIVALIK GROUP",
+    "version": "BETTER REAL ESTATE",
+    "footer": "BETTER CITY. BETTER LIFE."
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "kicker": "THE PROBLEM I KEEP SEEING",
+      "headline": "Four projects.|No system.|He thought that|was **normal**.",
+      "subline": "A developer I met last month. Every update came from WhatsApp messages to the site engineer. Most developers work exactly this way."
+    },
+    {
+      "type": "cards",
+      "kicker": "WHAT ACTUALLY BREAKS",
+      "headline": "Three failures,|every **time**.",
+      "cards": [
+        { "label": "Updates live in a chat", "desc": "Every site instruction sits in a thread nobody can search." },
+        { "label": "Context leaves with people", "desc": "A project manager quits and three months of context goes with them." },
+        { "label": "Every project starts over", "desc": "The same mistakes, repeated, at full cost." }
+      ]
+    },
+    {
+      "type": "quote",
+      "kicker": "THE PRINCIPLE",
+      "quote": "Growth is not random.|It is **designed**.",
+      "subline": "The same is true inside a company. If the standard only lives in someone's head, it is not a standard. It is a habit."
+    },
+    {
+      "type": "stats",
+      "kicker": "WHAT A DESIGNED DECISION LOOKS LIKE",
+      "headline": "One project.|Three **numbers**.",
+      "stats": [
+        { "label": "Open space", "value": "13→33%", "sub": "of the site" },
+        { "label": "Garden-facing", "value": "34→54%", "sub": "of all units" },
+        { "label": "Cost delta", "value": "₹228", "sub": "per sq. ft." }
+      ],
+      "subline": "People said buyers won't pay for green. They did."
+    },
+    {
+      "type": "cards",
+      "kicker": "WHAT WE DID ABOUT IT",
+      "headline": "We built the system|we kept **needing**.",
+      "subline": "I was tired of losing data every time a project manager left.",
+      "cards": [
+        { "label": "The system remembers", "desc": "The team changes. The knowledge stays." },
+        { "label": "One standard, not one person", "desc": "Every project becomes the blueprint for the next." }
+      ]
+    },
+    {
+      "type": "quote",
+      "kicker": "YOUR TURN",
+      "quote": "What's one thing in your business that only lives in **someone's** head right now?",
+      "note": "I read every reply.",
+      "swipe": ""
+    }
+  ]
+}
