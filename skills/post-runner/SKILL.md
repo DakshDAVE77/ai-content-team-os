@@ -74,21 +74,31 @@ failed.
    check the click against it and say so if it does not match — but **do not refuse the
    render for identity alone.** The approver is whoever the operator named, commonly a
    social media manager.
-2. **Hand the script to `avatar` for a render spec.** Never call a generation tool from
-   here — and note there is no generation tool to call: his Cartesia voice only exists in
-   HeyGen Studio. `avatar` reads the locked values from `brand/avatar-motion.md` and emits
-   the spec. Set `status: "awaiting_render"` and surface the spec in the console.
-3. **Wait for the rendered file.** A human renders in Studio and drops the file back —
-   this step is not automated and must not be faked. Confirm it exists, confirm 9:16, and
-   confirm the duration is inside the slot. A landscape file means the Studio aspect was
-   wrong: crop to 1080×1920 and say that you did.
-4. **Download it to the operator's machine.** The Instagram web uploader takes a local
-   file; a HeyGen URL is not one.
-5. **Write `status: "rendered"` with `videoUrl`, and stop.** He watches it in the console
-   and taps once. That tap is the `watch every output before delivering it` rule, and it
-   is the only thing standing between a lip-sync defect and his face on a live account.
-6. **On his tap, post it** with that variant's `caption` — the caption belongs to the
-   variant and is never borrowed from another one. Then capture the URL as below.
+2. **Get the render spec from `avatar`.** Never call a HeyGen generation tool — the API
+   cannot select the voice engine, so an API render is the wrong voice. `avatar` reads the
+   locked values from `brand/avatar-motion.md` and emits the spec. Set
+   `status: "generating"`.
+3. **Drive HeyGen Studio in the browser.** Follow
+   `${CLAUDE_PLUGIN_ROOT}/skills/post-runner/references/heygen-studio.md` step by step:
+   open Studio, confirm the account and the avatar look, paste the script verbatim, **set
+   the Voice Engine and Model dropdowns from `brand/avatar-motion.md`**, re-set Speed and
+   paste the motion block on every scene, set 9:16, preview, then Generate once.
+
+   **The engine dropdown is the step that keeps going wrong.** Studio can assign a
+   different engine to the same voice; the voice name still reads correctly and the
+   delivery is a different man. Read it, do not assume it.
+
+   No `~~browser` connector → stop, set `status: "awaiting_render"`, and surface the spec
+   for a human. Do not fake this step.
+4. **Watch the finished clip end to end** against the out-of-character list. Confirm 9:16
+   and that the duration fits the slot.
+5. **Publish.** Prefer HeyGen's own Instagram publishing if the account exposes it — it
+   avoids a download and a re-encode. Establish that on the first run and record the
+   answer. Otherwise download the file and use the Instagram composer in `composers.md`;
+   the web uploader takes a local file, not a HeyGen URL.
+6. **Use that variant's `caption`** — captions belong to their variant and are never
+   borrowed across A/B/C. Then capture the live URL as below. **A HeyGen "published" state
+   is not proof** — read the URL from Instagram itself.
 
 **Cost note, said once:** a render is billed by output seconds and starts on his click.
 Never start a second render for the same pieceId because the first looked slow — read

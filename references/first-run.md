@@ -53,7 +53,7 @@ Check at the start of a run and say plainly which are on.
 |---|---|---|
 | Live social listening | a browser automation connector (`~~browser`) | Web search only. Say the live scan did not run. |
 | Mining your own IG comments for ideas | the same connector | No comment ideas. Say the mining did not run — do not substitute search results for it. |
-| Presenter video — the operator on screen | `brand/avatar-motion.md` with a confirmed avatar and voice, **plus a human to render in HeyGen Studio** — the API cannot synthesise his Cartesia voice | Reels ship as script + stills, or the operator films |
+| Presenter video — the operator on screen | `brand/avatar-motion.md` with a confirmed avatar and voice, **plus a `~~browser` connector** — the Reel is rendered by driving HeyGen Studio, because the API cannot select the voice engine | Reels ship as script + spec for a human to render |
 | Atmospheric B-roll | not generated — it is filmed, pulled from the archive, or bought | Shot list, one line per beat |
 | Analytics | operator pastes exports; or a platform API | Manual paste. Never estimate. |
 | Posting | Claude in Chrome, from a console pick | Package only. The operator posts by hand. |

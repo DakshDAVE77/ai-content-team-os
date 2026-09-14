@@ -13,7 +13,7 @@ at all.
 
 | Category | Placeholder | Options | What it unlocks |
 |---|---|---|---|
-| Browser automation | `~~browser` | Claude in Chrome, the built-in browser | Live social listening; mining your own Instagram comments for ideas; reading your own analytics pages |
+| Browser automation | `~~browser` | Claude in Chrome, the built-in browser | Live social listening; mining your own Instagram comments for ideas; reading your own analytics pages; **driving HeyGen Studio to render the Reel**, and posting |
 | Video generation | `~~video generation` | **HeyGen** | Verifying avatar and voice ids, credits, and reading back finished renders. **Rendering itself happens in HeyGen Studio, by a human** — see below |
 | Scheduler / posting | `~~scheduler` | n8n, Zapier, Buffer, a platform API | Posting from a packaged slate instead of copy-paste |
 | Email | `~~email` | Gmail, Outlook, any mail connector | Confirmation to the operator when a post goes live |

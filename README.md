@@ -81,15 +81,15 @@ Every Instagram option shows the full Reel script, so picking one means approvin
 words. That button says **POST — approves the script**, and clicking it:
 
 1. records the pick, with who approved it and when
-2. shows the **render spec** — your avatar, your voice, Cartesia, the speed and motion
-   block, 9:16 — to carry into HeyGen Studio
-3. waits while a human renders it there and drops the file back
-4. posts it as a Reel with **that variant's** caption when you tap once
+2. opens **HeyGen Studio in your browser**, pastes the script, sets your avatar, voice,
+   voice engine, speed and motion block, and renders at 9:16
+3. shows you the finished clip
+4. publishes it as a Reel with **that variant's** caption when you tap once
 
-**Why a human renders.** Your voice is a Cartesia voice, and HeyGen's API can only
-synthesise through Starfish. An API render comes back as the right voice identity in the
-wrong engine — near-identical length, audibly not you. One click in Studio is a smaller
-cost than publishing a face and voice that are nearly yours. LinkedIn and X stay fully
+**Why it drives the browser instead of calling the API.** The HeyGen API gives no way to
+select the voice engine — it rejects the value outright and does not record which engine
+it used. The engine picker exists only in Studio. So the Reel is made where the controls
+are, the same way this plugin already posts to Instagram. LinkedIn and X stay fully
 automatic; they are text.
 
 Two things are deliberate. **The console records who pressed the button** — you decide
