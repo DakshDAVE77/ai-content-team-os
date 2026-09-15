@@ -13,8 +13,16 @@ voice. It is a legitimate and ordinary thing for a company to do with its own fo
 and it is also the capability that produces deepfakes. The difference is entirely consent
 and control, so both are enforced here rather than assumed.
 
-**It does not render.** It writes the approved script and the Studio render spec; a human
-renders in HeyGen Studio, because that is the only place his Cartesia voice exists.
+**It renders — by driving HeyGen Studio in Chrome, through Generate.** Not through the
+API. The API cannot synthesise his Cartesia voice, so the render happens in the app, with
+Claude at the keyboard following
+`${CLAUDE_PLUGIN_ROOT}/skills/post-runner/references/heygen-studio.md` step by step.
+That reference is owned by this skill; `post-runner` reuses it when a console click
+commissions a Reel later.
+
+The render spec is still written, every time, into the piece file and the console. It is
+not a leftover from when a human rendered: it is the checklist Claude follows at the
+keyboard and the record of what the run was supposed to produce.
 
 Two things about the HeyGen setup change the shape of this job, and both cut the same
 way:
@@ -84,6 +92,23 @@ Record `requestedBy` on every click. If an approver identity is recorded in
 viewer's click counts and the identity is captured for the audit trail. **Do not refuse on
 identity alone.**
 
+### When the run renders before the console exists
+
+Choosing the avatar route at the top of a run commissions a render **before** there is a
+console to click. The click cannot be the approval surface, so the chat is:
+
+**Paste the full script in chat, verbatim, and wait for a yes.** Nothing else counts —
+not "make the reel", not the route choice itself, not silence. He picked a *route*; Gate
+2 is about these exact words coming out of his face, and he has not read them yet.
+
+This is the one place `content-team`'s no-scripts-in-chat rule is deliberately broken,
+and breaking it is the point: the script has to be visible to be approved. Quote it in
+the piece file with the date and who approved it, exactly as for a click.
+
+If he does not answer, the Reel is not rendered. Leave it `awaiting_render` with the spec
+visible and say so in the receipt. **Never render on an assumed yes** — an unanswered
+question is not an approval, and a render is billed and, worse, is his face.
+
 Refuse, and say why, when asked to have the avatar deliver:
 
 - a first-person claim not in `brand/proof.md` or in their approved script
@@ -111,16 +136,20 @@ version was real.
 
 | Deliverable | How |
 |---|---|
-| **Presenter Reel** — him on screen delivering the argument | An approved script plus a **Studio render spec**. A human renders it in HeyGen Studio. The default format. |
+| **Presenter Reel** — him on screen delivering the argument | An approved script and a render spec, then Studio driven in Chrome through Generate. The default format. |
 | **Presenter segment** — a talking-head beat inside a longer piece | Same, cut to the beat's length. Length is set by rewriting the script, never by stretching. |
 | **Voice-forward piece** — his voice carrying stills or type | Same; the face is dropped in the edit afterwards. |
 
-**This skill does not render.** It produces the script and the spec; the render happens in
-HeyGen Studio because that is the only place his Cartesia voice exists. The API's
-text-to-speech is Starfish-only and produces the right voice *identity* in the wrong
-engine — close enough to pass a duration check, not close enough to be him. See
-`${CLAUDE_PLUGIN_ROOT}/skills/videographer/references/heygen.md` → *Why the API does not
-render*. That is settled; do not re-litigate it with another test render.
+**It renders in the app, never through the API.** The API's text-to-speech is
+Starfish-only and produces the right voice *identity* in the wrong engine — close enough
+to pass a duration check, not close enough to be him. Studio is the only place his
+Cartesia voice exists, which is why the render is a browser job rather than a tool call.
+See `${CLAUDE_PLUGIN_ROOT}/skills/videographer/references/heygen.md` → *Why the API does
+not render*. That is settled; do not re-litigate it with another test render.
+
+**No `~~browser` connector → no render.** Say so in one line, leave the piece
+`awaiting_render` with the spec visible, and do not substitute an API call to produce
+something. A clip in the wrong voice is worse than no clip.
 
 **What this skill will not do, whatever the connector offers:** create a voice, create an
 avatar, or record a consent statement. `clone_voice`, `design_voice`, `create_photo_avatar`,
@@ -148,17 +177,33 @@ something he commissions, never something this skill runs to save a render.
    Gujarati at 4.0 syllables per second against a hard cap. Cut to length *before* it
    reaches Studio — rendering is billed by output seconds and re-rendering to fix a line
    is the expensive mistake.
-4. **Emit the render spec**, exactly as laid out in `references/heygen.md` → *The render
-   spec*: avatar, voice, engine, model, speed, motion block, 9:16, and the script
-   verbatim. Put it in the piece file and in the console. It is the instruction sheet for
-   whoever sits down in Studio.
-5. **Say the two Studio traps out loud in the handover.** Speed resets on every scene and
-   has to be re-set; the motion block is pasted verbatim on every scene. Both are how a
-   render comes back sounding and moving like a different person.
-6. **When the file comes back, watch it end to end before it goes anywhere.** Lip sync
-   drift, a wrong emphasis, a number said incorrectly, blink cadence, teeth showing, hands
-   above the lap, a scene at the wrong speed. The motion block names each of those as out
-   of character — check against it, not against taste. Confirm 9:16.
+4. **Emit the render spec**, exactly as laid out in
+   `${CLAUDE_PLUGIN_ROOT}/skills/videographer/references/heygen.md` → *The render spec*:
+   avatar, voice, engine, model, speed, motion block, 9:16, and the script verbatim. Put
+   it in the piece file and in the console **before** opening the browser. It is the
+   checklist you are about to follow, and the record of what this run intended.
+5. **Drive Studio in Chrome**, following
+   `${CLAUDE_PLUGIN_ROOT}/skills/post-runner/references/heygen-studio.md` step by step.
+   Read the page before each click; stop rather than guess if a control has moved. The
+   three steps that decide whether it comes back as him:
+
+   - **Voice Engine: Cartesia, Model: Sonic 3.6.** Set both dropdowns, every render.
+     Studio will happily assign ElevenLabs to the same voice — the name still reads
+     correctly and the output is a different man, with nothing in the log to flag it.
+   - **Speed resets on every scene.** Re-set it on each one and confirm on the preview.
+   - **The motion block is pasted verbatim on every scene**, never shortened for a short
+     one.
+
+   Then 9:16, preview each scene, and **click Generate once.** Renders take minutes —
+   read the page for completion rather than re-clicking. Every click bills output
+   seconds.
+6. **Watch it end to end before it goes anywhere.** Lip sync drift, a wrong emphasis, a
+   number said incorrectly, blink cadence, teeth showing, hands above the lap, a scene at
+   the wrong speed. The motion block names each of those as out of character — check
+   against it, not against taste. Confirm 9:16.
+
+   A defect here is not a re-render to be shrugged at. It is his face saying something
+   slightly wrong, and it is the most expensive thing this team can ship.
 7. **Record it** per Gate 3, with the HeyGen video id, so any clip traces back to the
    script it was approved against. `get_video` will give you the id, URL and duration.
 
@@ -166,6 +211,12 @@ something he commissions, never something this skill runs to save a render.
 
 - Generate an avatar or voice that is not the operator's own.
 - Choose a voice, engine or speed instead of reading `brand/avatar-motion.md`.
+- **Click Generate twice for the same piece** because the first looked slow. Read the
+  page. Each click bills output seconds.
+- **Render on an assumed yes.** Picking the avatar route is not approving the script.
+  No answer means `awaiting_render`, not a render.
+- **Click Generate before reading the Voice Engine dropdown.** The least visible and most
+  expensive mistake available here.
 - **Render through the API.** `create_video_from_avatar`, `create_video_from_studio`,
   `create_speech`, `generate_from_template`, `create_video_agent` — all of them synthesise
   through Starfish, not his Cartesia voice. A clip from any of them is not him.

@@ -37,10 +37,20 @@ corpus. Updating the plugin never touches them. See `references/memory-map.md`.
 
 ## The one command
 
-Say **"run the content engine"**. It researches the day, then publishes one artifact:
+Say **"run the content engine"**. It asks one question before anything else — **how
+today's Reel gets made**:
+
+| | |
+|---|---|
+| **Cut today's clips** | You paste the paths to what you filmed. Claude joins them in **Higgsfield** with transitions and delivers 9:16. Your own footage; only the joints are synthesised. |
+| **AI avatar video** | Claude drives **HeyGen Studio** in Chrome and renders you on screen — locked avatar, your Cartesia voice, Sonic 3.6 — through Generate. It shows you the script first and waits for a yes. |
+| **No video today** | Text slate. Instagram ships as caption plus cover. |
+
+It asks first rather than last because the answer decides which Reel idea is worth
+picking at all. Then it researches the day and publishes one artifact:
 
 ```
-INSTAGRAM   A / B / C   ·74 emerging   caption + the Reel script as text   [POST]
+INSTAGRAM   A / B / C   ·74 emerging   caption + today's Reel                [POST]
 LINKEDIN    A / B / C   ·66 weak       full post                           [POST]
 X           A / B / C   ·58 weak       full post                           [POST]
 ```
@@ -63,9 +73,10 @@ NEEDS YOU · the specific thing only you can answer
 Click **POST** on the option you want — that records the pick. Then say **"post"** in
 chat, and Claude opens Chrome, fills the composer with your chosen copy and submits it.
 
-All three platforms go at once. LinkedIn and X land in seconds; Instagram takes minutes
-because the Reel is rendered first. **They never wait for each other**, and one failing
-never stops the other two.
+All three platforms go at once. LinkedIn and X land in seconds. Instagram is usually just
+as quick now, because the video was made during the run — it only takes minutes when the
+Reel still has to be rendered. **They never wait for each other**, and one failing never
+stops the other two.
 
 The button records; the chat sends. A published web page has no route into a Claude
 session, so a button that claimed to post directly from the page would be a button that
@@ -77,8 +88,15 @@ once, and nothing is recorded as published without a live URL read from the page
 
 ## The Instagram button is different, on purpose
 
-Every Instagram option shows the full Reel script, so picking one means approving the
-words. That button says **POST — approves the script**, and clicking it:
+**Usually the video is already made by the time you see the console** — that is what the
+question at the top of the run was for. The clip is sitting on the Instagram option,
+playable. You watch it, tap **POST**, and it uploads with that variant's caption. Nothing
+is rendered twice.
+
+The older behaviour is still there as the fallback, for when the run could not finish the
+video — you never approved the script, or the browser was not available. Then the option
+shows the full script and the button says **POST — approves the script**, because picking
+it means approving the words. Clicking it:
 
 1. records the pick, with who approved it and when
 2. opens **HeyGen Studio in your browser**, pastes the script, sets your avatar, voice,
@@ -89,8 +107,14 @@ words. That button says **POST — approves the script**, and clicking it:
 **Why it drives the browser instead of calling the API.** The HeyGen API gives no way to
 select the voice engine — it rejects the value outright and does not record which engine
 it used. The engine picker exists only in Studio. So the Reel is made where the controls
-are, the same way this plugin already posts to Instagram. LinkedIn and X stay fully
-automatic; they are text.
+are, the same way this plugin already posts to Instagram. Higgsfield is driven the same
+way, for the same reason: there is no API, there is a subscription and an app. LinkedIn
+and X stay fully automatic; they are text.
+
+**Higgsfield edits, it never generates.** That product will make a person from a photo in
+two clicks, which is exactly the thing your avatar's consent gates exist to prevent. So
+in this plugin every frame it touches traces back to a file you handed over — clips in,
+transitions out. Your face is synthesised in one place only, HeyGen, past both gates.
 
 Two things are deliberate. **The console records who pressed the button** — you decide
 once who may approve wording for your avatar, commonly your social media manager, and
@@ -246,7 +270,7 @@ says so.
 | **script-writer** | "write the post" | Reels, carousels, LinkedIn, X, Pulse, captions. |
 | **carousel** | "make a carousel" | Typographic 1080×1350 slides on measured geometry, with a validator that rejects overflow. |
 | **designer** | "design this" | Everything else visual — LinkedIn pages, X images, covers, headers. |
-| **videographer** | "make the reel" | Plans the video layer and the beat plan. Routes generation to `avatar`, stills to `designer`, footage to a shot list. |
+| **videographer** | "make the reel", "cut my clips" | Owns the video layer across two routes: cuts his own filmed clips in Higgsfield with transitions, or plans a presenter Reel and hands it to `avatar`. Stills to `designer`, unfilmed beats to a shot list. |
 | **avatar** | "use my avatar" | The only skill that synthesises you. HeyGen, your fine-tuned avatar and voice, gated on your own authorization and your approval of the exact wording. |
 | **analyst** | "did it work" | Logs numbers, names patterns with sample-size labels, refuses to rank a sample too small. |
 | **publisher** | "build the console" | Calendar, captions, pre-flight, and the console — nine options, content only, a POST button each. |
@@ -281,6 +305,7 @@ All optional. The team works without every one of them, it just does less. See
 |---|---|
 | Browser automation | Live listening, and reading your own analytics pages |
 | Video generation (HeyGen) | Presenter Reels — you on screen, in your own voice |
+| Browser automation + a Higgsfield subscription | Cutting the clips you filmed into a Reel with transitions |
 | Browser automation | Posting your picked option to the live account |
 | Analytics | Automatic performance logging |
 

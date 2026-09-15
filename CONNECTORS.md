@@ -13,8 +13,9 @@ at all.
 
 | Category | Placeholder | Options | What it unlocks |
 |---|---|---|---|
-| Browser automation | `~~browser` | Claude in Chrome, the built-in browser | Live social listening; mining your own Instagram comments for ideas; reading your own analytics pages; **driving HeyGen Studio to render the Reel**, and posting |
-| Video generation | `~~video generation` | **HeyGen** | Verifying avatar and voice ids, credits, and reading back finished renders. **Rendering itself happens in HeyGen Studio, by a human** — see below |
+| Browser automation | `~~browser` | Claude in Chrome, the built-in browser | Live social listening; mining your own Instagram comments for ideas; reading your own analytics pages; **driving HeyGen Studio to render the Reel**, **driving Higgsfield to cut his clips**, and posting |
+| Video generation | `~~video generation` | **HeyGen** | Verifying avatar and voice ids, credits, and reading back finished renders. **Rendering itself happens in HeyGen Studio, driven through `~~browser`** — see below |
+| Clip editing | `~~browser` | **Higgsfield** | Joining his own filmed clips with transitions into a 9:16 Reel, driven in Chrome. Edits only — never generation |
 | Scheduler / posting | `~~scheduler` | n8n, Zapier, Buffer, a platform API | Posting from a packaged slate instead of copy-paste |
 | Email | `~~email` | Gmail, Outlook, any mail connector | Confirmation to the operator when a post goes live |
 | Analytics | `~~analytics` | A platform API, or a warehouse connector | Automatic performance logging instead of pasted exports |
@@ -55,12 +56,31 @@ Two consequences worth knowing before you connect it:
 **The connector does not render presenter Reels, and is not expected to.** The operator's
 voice is a Cartesia voice, and HeyGen's API synthesises only through Starfish — so an API
 render returns the right voice identity in the wrong engine. Renders happen in HeyGen
-Studio, by a human, from a spec this team produces. The connector is used to verify ids
-still resolve and to read back a finished video. See
+Studio, driven in Chrome, from a spec this team produces. The connector is used to verify
+that ids still resolve and to read back a finished video. See
 `skills/videographer/references/heygen.md` → *Why the API does not render*.
 
 The consent basis comes from HeyGen's own on-camera recording, which it requires before
 building a twin at all; this team does not ask for it twice.
+
+**Higgsfield** — no connector exists and none is needed. It is a subscription he already
+has, and it is driven in Chrome through `~~browser`, exactly like Instagram or Studio.
+See `skills/videographer/references/higgsfield.md`.
+
+It is the **other** video route, and it does the opposite job to HeyGen: HeyGen
+synthesises him, Higgsfield joins footage he actually filmed. The operator picks between
+them at the top of every run.
+
+⚠ **Higgsfield also generates video from text and images, and this team never lets it.**
+Every frame in the output has to trace back to a file he handed over. A generated
+likeness of him from here is the same deepfake HeyGen's gates exist to prevent, reached
+through a product that asks nothing. Uploads in, transitions out; the moment a text box
+is describing a scene, it has stopped being an edit.
+
+Worth knowing before you plan a long Reel: the Transitions app takes **two clips per
+render, five seconds each, fifteen seconds out**, and the output locks to the aspect ratio
+of the first clip. N clips means N−1 renders, and a landscape first clip silently makes a
+landscape Reel. The limits are in the reference.
 
 **`~~analytics`** — read the hard limit in `skills/analyst/SKILL.md` first. No
 analytics API returns *who* engaged, only how many. If your brand config ranks on

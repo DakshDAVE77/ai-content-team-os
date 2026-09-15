@@ -3,7 +3,7 @@
 HeyGen is the only video engine here. It produces **the operator on screen, speaking**,
 from a locked avatar and a locked voice.
 
-**Renders happen in HeyGen Studio, by a human. Not through the API.** That is a
+**Renders happen in HeyGen Studio, driven in Chrome. Not through the API.** That is a
 deliberate decision, it is the single most important thing in this file, and the reason
 is below. Do not "fix" it.
 
@@ -28,7 +28,8 @@ the worst kind of wrong, because it looks correct in every log.
 **Duration is not a proxy for timbre.** That mistake cost seven renders. Two engines can
 pace within a few per cent of each other and sound like different people.
 
-So: the team writes the script, a human renders it in Studio where Cartesia lives.
+So: the team writes the script, and `avatar` renders it by driving Studio in Chrome,
+where Cartesia lives. The browser is the render path; the API is not.
 
 ## What the API is still used for
 
@@ -51,7 +52,7 @@ Also never: `clone_voice`, `design_voice`, `create_photo_avatar`, `create_digita
 ## The render spec
 
 This is what `avatar` hands over. It goes in the piece file and into the console, and it
-is what the person at the keyboard follows.
+is the checklist followed at the keyboard.
 
 ```
 RENDER IN HEYGEN STUDIO

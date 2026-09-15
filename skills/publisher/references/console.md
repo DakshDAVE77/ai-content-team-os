@@ -127,12 +127,23 @@ variant, never shared across the three.** `requestedBy` is the signed-in viewer.
 records an approver identity and the click does not match it, it says so — it does not
 refuse.
 
-**The Instagram click does not start a render.** It records the pick and surfaces the
-**render spec** — avatar, voice, engine, speed, motion block, 9:16, script verbatim — for
-someone to carry into HeyGen Studio. Label the button **`POST — approves the script`**, and
-show the spec with a copy action beside it. Status runs
-`queued → awaiting_render → rendered → posted`, and `awaiting_render` is a human step. Do
-not draw a progress bar against something no machine is doing.
+**What the Instagram click does depends on whether a video already exists.** The engine
+asks for a video route at the top of every run, so by the time the console is built the
+Reel has usually already been cut or rendered. Three cases, and the button is labelled
+differently in each:
+
+| State of the option | The click | Button |
+|---|---|---|
+| **A clip exists** — cut in Higgsfield, or rendered in Studio during the run | Records the pick. `post-runner` uploads the file that is already there and **starts nothing**. | **`POST`** |
+| **`awaiting_render`** — the run could not render it: no script approval, or no browser | **This is Gate 2.** Show the script in full on the page, plus the render spec — avatar, voice, engine, speed, motion block, 9:16, script verbatim — with a copy action. The click approves those exact words and commissions the render. | **`POST — approves the script`** |
+| **No video** — caption and cover only | Records the pick. Nothing is commissioned. | **`POST`** |
+
+Status runs `queued → awaiting_render → rendering → rendered → posted`, and an option
+that arrives with a clip simply starts further along it.
+
+`awaiting_render` is a **waiting** state, not a progress state — nothing is running until
+he clicks, so do not draw a progress bar against it. `rendering` is the one that may show
+a bar, because by then a machine really is doing something.
 
 ### The rendered state
 

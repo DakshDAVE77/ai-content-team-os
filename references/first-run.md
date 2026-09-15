@@ -16,6 +16,7 @@ checklist any employee uses to tell whether it has been run.
 | `brand/proof.md` | brand-setup | Writers invent numbers. This is the only list of assertable facts. |
 | `brand/offers.md` | brand-setup, if they have an offer | CTAs get invented |
 | `brand/avatar-motion.md` | the operator, drafted by brand-setup | Voice, speed and motion get chosen per run instead of read. Two versions of the same person. |
+| `brand/reel-style.md` | the operator, drafted on the first Higgsfield run | Transitions get picked from whatever the gallery features that week, and the feed stops looking like one person. Only needed if he cuts his own clips. |
 | `library/idea-bank.md` | scaffold | No pipeline — this is the spine |
 | `library/hooks.md` | scaffold | Hook choices are not recorded, so nothing is learned |
 | `library/swipe-file.md` | scaffold | References are lost |
@@ -53,7 +54,8 @@ Check at the start of a run and say plainly which are on.
 |---|---|---|
 | Live social listening | a browser automation connector (`~~browser`) | Web search only. Say the live scan did not run. |
 | Mining your own IG comments for ideas | the same connector | No comment ideas. Say the mining did not run — do not substitute search results for it. |
-| Presenter video — the operator on screen | `brand/avatar-motion.md` with a confirmed avatar and voice, **plus a `~~browser` connector** — the Reel is rendered by driving HeyGen Studio, because the API cannot select the voice engine | Reels ship as script + spec for a human to render |
+| Clip Reels — his own footage cut with transitions | a `~~browser` connector, a Higgsfield subscription, and clips he pastes in chat | Cut plan only, one line per joint |
+| Presenter video — the operator on screen | `brand/avatar-motion.md` with a confirmed avatar and voice, **plus a `~~browser` connector** — the Reel is rendered by driving HeyGen Studio, because the API cannot select the voice engine | Reels ship as script + spec, left `awaiting_render` |
 | Atmospheric B-roll | not generated — it is filmed, pulled from the archive, or bought | Shot list, one line per beat |
 | Analytics | operator pastes exports; or a platform API | Manual paste. Never estimate. |
 | Posting | Claude in Chrome, from a console pick | Package only. The operator posts by hand. |

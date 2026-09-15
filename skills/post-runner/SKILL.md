@@ -69,6 +69,19 @@ failed.
 
 ### The Instagram chain
 
+**First: does a video already exist?** Read the doc before assuming this click
+commissions anything. The engine now asks for a video route at the top of every run, so
+the Reel is often already cut or already rendered by the time he clicks POST.
+
+| Doc says | Do this |
+|---|---|
+| `status: "rendered"`, or a video file/URL on the doc | **Upload what is there.** Skip the whole render chain — go to step 5. Never re-render a piece that already has a clip: it is billed twice and can come back subtly different from the one that was approved and watched. |
+| Clip edit from the Higgsfield route | Same — the file exists. Upload it. Nothing in this chain applies. |
+| `status: "awaiting_render"` | The render did not happen during the run — missing script approval, or no browser. **Now the click is Gate 2**, and the chain below runs in full. |
+| No video at all — caption and cover only | Post the copy with the cover. Do not invent a Reel. |
+
+The rest of this chain is for `awaiting_render` only.
+
 1. **Record who clicked.** Read `requestedBy` on the doc and carry it into the piece
    file for the audit trail. If `brand/avatar-motion.md` records an approver identity,
    check the click against it and say so if it does not match — but **do not refuse the
@@ -184,7 +197,8 @@ Nothing else. No summary of the copy, no congratulations. Omit any section that 
 - Render his likeness on a click that was not his.
 - Post a Reel nobody watched.
 - Hold a finished LinkedIn or X post back because the Reel is still rendering.
-- Start a second render for a pieceId that already has one in flight.
+- Start a second render for a pieceId that already has one in flight, **or one that
+  already finished during the run.** Read the doc; the clip is usually already made.
 - Edit the copy on the way to the composer.
 - Post to an account you did not verify.
 - Click Post twice.

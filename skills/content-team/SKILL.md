@@ -1,6 +1,6 @@
 ---
 name: content-team
-description: Run the AI content engine - one command that researches the day, then publishes one artifact holding three Instagram options (each with the Reel script as text), three LinkedIn options and three X options, each with a POST button. Use when the user says run the content engine, run the content team, run the engine, what should I post, give me today's posts, content status, or asks for content without naming an employee.
+description: Run the AI content engine - one command that first asks how today's Reel gets made (cut the clips he filmed, in Higgsfield, or an AI avatar video rendered in HeyGen Studio), then researches the day and publishes one artifact holding three Instagram options, three LinkedIn options and three X options, each with a POST button. Use when the user says run the content engine, run the content team, run the engine, what should I post, give me today's posts, content status, or asks for content without naming an employee.
 ---
 
 # The Content Engine
@@ -15,6 +15,10 @@ and do not create a trigger.
 **Do not narrate the pipeline.** No "now running the researcher", no phase headings, no
 progress commentary. Run it, publish the artifact, return the three-line receipt at the
 bottom of this file.
+
+**Two places the run speaks, and only two:** the video-route question in Step 0, and the
+script approval the avatar route needs before it renders. Both are questions that change
+what gets built. Neither is narration, and nothing else earns a line.
 
 Read `${CLAUDE_PLUGIN_ROOT}/references/memory-map.md` first and resolve `<root>`.
 
@@ -39,6 +43,37 @@ Read `${CLAUDE_PLUGIN_ROOT}/references/memory-map.md` first and resolve `<root>`
    claim a capability not verified.
 
 ## The run
+
+### 0. Ask the video route — first, before anything else
+
+**This is the first thing the run does.** Not after the research, not once the slate is
+built. The route decides which Reel idea is worth picking at all, so asking late means
+choosing an idea the chosen route cannot carry — and then either rewriting it or shipping
+a compromise.
+
+**One `AskUserQuestion` call, one question, three options.** Ask it, take the answer,
+and get on with the run — this is the only thing the engine asks up front.
+
+| Option | What it commits to |
+|---|---|
+| **Cut today's clips** | He filmed something today. He pastes the clip paths in chat; `videographer` joins them in Higgsfield with transitions and delivers 9:16. |
+| **AI avatar video** | `avatar` drives HeyGen Studio in Chrome and renders him on screen, locked avatar, **Cartesia / Sonic 3.6**, through Generate. |
+| **No video today** | Text slate. The three Instagram options ship as caption plus cover, and no Reel is planned or promised. |
+
+**If he picks the clips route**, ask for the paths in the same breath and wait for them.
+Do not guess a folder, do not go looking in Downloads, and do not start the run around a
+Reel whose footage has not arrived. Clips are files he hands over; nothing else is a clip.
+
+**If he picks the avatar route**, say nothing further about it now. The script does not
+exist yet, and `avatar` Gate 2 collects its approval later — in chat, on the finished
+script, before the render. Picking a route is not approving words.
+
+**Check the browser before promising either.** Both routes are browser jobs. No
+`~~browser` connector means no render on either path: say so in one line, take the answer
+anyway, and let the Reel ship as a cut plan or a script plus spec. Do not quietly demote
+him to the text slate.
+
+Record the chosen route in `runs/YYYY-MM-DD.md` with the rest of the run line.
 
 ### 1. Mine his own comments, then listen
 Both need Claude in Chrome. Skip cleanly if absent — never imply you did either.
@@ -92,15 +127,33 @@ One idea per surface, from the idea bank or today's scan:
   might grow the account.
 - No two of the three from the same pillar, and never two on the same source table.
 - Nothing repeating an argument or proof story used in the last seven days.
-- The Reel idea should be implementable as a presenter piece via the operator's avatar.
-  If `brand/avatar-motion.md` has no confirmed `avatar_id`, or there is no video
-  connector, the Reel idea must work without him on camera at all — decide that before
-  writing, not after.
+- **The Reel idea has to fit the route he chose in Step 0.** Decide that before writing,
+  not after.
+  - **Clips route** — the idea must be carryable by the footage actually in hand. Read
+    what the clips show before picking, and remember the shape Higgsfield renders: 2
+    inputs per pass, 5s each, 15s out. An idea needing eight beats is the wrong idea
+    today, however good it is.
+  - **Avatar route** — the idea must be a judgement, correction or position worth him
+    saying to camera. If `brand/avatar-motion.md` has no confirmed `avatar_id`, or the
+    browser is unreachable, it ships as script plus spec and the idea still has to earn
+    that.
+  - **No video** — the idea must land as caption and cover alone. Do not pick a Reel idea
+    and then discover there is no Reel.
 
 ### 5. Build
-`hook-writer` → `script-writer`, then `videographer` for the Reel beat plan and
-`avatar` only where authorization and approved wording both exist. `videographer`
-never generates his likeness itself.
+`hook-writer` → `script-writer`, then `videographer`, which takes the Step 0 route and
+builds or hands over accordingly:
+
+- **Clips route** — `videographer` writes the cut plan, then drives Higgsfield itself.
+  Editing his own footage needs no gate beyond the ones already on the copy.
+- **Avatar route** — `videographer` writes the beat plan and hands the script to
+  `avatar`, which checks both gates, reads the locked ids and drives Studio through
+  Generate. **`videographer` never renders his likeness itself**, in either product.
+
+**The avatar route pauses the run once.** Gate 2 needs him to read the exact words before
+they come out of his face, so the finished script is pasted in chat and the render waits
+for a yes. That is the one deliberate stop in this pipeline; everything else continues
+around it. No answer means the Reel is left `awaiting_render` and the slate still ships.
 
 Twelve hooks written and scored, **three chosen — one per angle** (data-led,
 correction, observation). Those become variants A, B and C. Never one. Never one
@@ -151,6 +204,11 @@ Plus the artifact card, which the app renders on its own.
 - **No post copy, scripts, captions, hooks or sources in chat.** All of it is in the
   artifact and in `content/<slug>.md`. The confidence numbers are on the console; do
   not repeat them in the receipt.
+
+  **One exception, and it is load-bearing: the avatar script.** On the avatar route the
+  full Reel script is pasted in chat and waits for a yes, because `avatar` Gate 2 is
+  exactly the requirement that a human read those words before they are spoken in his
+  face. A script he never saw is not an approved script. Paste it, wait, then render.
 - **No commentary on the machinery** — not what was researched, not what was skipped,
   not what was held back. Those belong in the piece files and the run log.
 - **One `⚠` line at most.**
@@ -161,12 +219,26 @@ The one exception: if he asks to see a piece in chat, paste that piece.
 ## Posting
 
 Posting is a separate step and a separate skill. He clicks POST on an option in the
-artifact; that records the pick. On an **Instagram** option the button also commissions
-the Reel — his click on a visible script is `avatar` Gate 2, so the console records who
-clicked, and only his click starts a render. When he then says **"post"** in chat, `post-runner`
-reads the pick and drives Claude in Chrome to publish it. Do not attempt to post
-during this run, and never treat a click as evidence that something went live — only a
-URL is evidence.
+artifact; that records the pick. When he then says **"post"** in chat, `post-runner` reads
+the pick and drives Claude in Chrome to publish it. Do not attempt to post during this
+run, and never treat a click as evidence that something went live — only a URL is
+evidence.
+
+**On an Instagram option, whether the button commissions a Reel depends on Step 0.**
+
+- **A route ran and produced a file** — the video already exists. The console carries it,
+  the POST click is a pick and nothing more, and `post-runner` uploads what is there.
+  **It does not render again.** A second render of a piece that already has one is billed
+  twice and can come back subtly different from the clip that was approved.
+- **The avatar route was chosen but the script was never approved, or the browser was
+  unreachable** — the option stays `awaiting_render` with the script visible, and the
+  click is Gate 2 exactly as before: his click on a visible script approves it, the
+  console records who clicked, and only that click starts a render.
+- **No video route** — the Instagram options are caption plus cover. The button posts;
+  nothing is commissioned.
+
+Record which of the three applies on the `post_request` doc, so `post-runner` reads it
+rather than inferring it.
 
 Append a one-line note to `runs/YYYY-MM-DD.md`: date, three slugs, cursor state,
 anything held.

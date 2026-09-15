@@ -1,5 +1,12 @@
 # Driving HeyGen Studio in the browser
 
+**Owned by `avatar`.** It lives under `post-runner` for historical reasons and is read by
+both: `avatar` follows it during a run when the operator picks the avatar route, and
+`post-runner` follows it when a console POST click commissions a Reel that was left
+`awaiting_render`. Same sequence either way. Only one of them runs it for a given piece —
+check the doc's status before starting, because a second render of the same piece is
+billed twice.
+
 The API cannot select the voice engine. The Studio UI can. So the Reel is produced by
 **driving Studio in Chrome** — the same way this team drives Instagram, LinkedIn and X.
 

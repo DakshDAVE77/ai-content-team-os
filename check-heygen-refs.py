@@ -34,8 +34,21 @@ REQUIRED = {
         "RENDER IN HEYGEN STUDIO",
     ],
     "skills/avatar/SKILL.md": [
-        "does not render",
+        "never through the API",
         "Cartesia",
+        "Starfish",
+    ],
+    # Higgsfield is the other video route and it is an EDITOR here, never a
+    # generator. That product will happily make a person from a photo, which is
+    # the same deepfake the avatar gates exist to prevent, reached through a
+    # door that asks nothing. And its output takes the aspect ratio of clip 1,
+    # which is how a landscape Reel ships without anyone noticing.
+    "skills/videographer/references/higgsfield.md": [
+        "Uploaded frames only",
+        "Locked to clip 1",
+    ],
+    "skills/videographer/SKILL.md": [
+        "never generates the operator's likeness",
     ],
     "skills/avatar/references/build.md": [
         "RENDER IN HEYGEN STUDIO",

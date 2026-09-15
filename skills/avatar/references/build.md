@@ -184,7 +184,7 @@ stopped resolving, stop and say so — do not let someone pick the nearest match
 
 **Cost.** Billing is by output duration, so the saving is made in the script — cut the
 read before it reaches Studio. Three re-renders to fix one line is the expensive mistake,
-and it is more expensive now because a human does each one.
+and it is more expensive now because each one is a browser session, not a tool call.
 
 ## Writing what he says
 

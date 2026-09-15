@@ -37,6 +37,7 @@ only when a step needs a cloud-only tool (image rendering, a skill's script).
 | `brand/offers.md` | brand-setup | script-writer, publisher |
 | `brand/avatar-authorization.md` | the operator | avatar — optional, scope only |
 | `brand/avatar-motion.md` | the operator | avatar, videographer, script-writer |
+| `brand/reel-style.md` | the operator, drafted on the first Higgsfield run | videographer |
 | `research/trends-YYYY-MM-DD.md` | researcher | manager, hook-writer |
 | `research/competitors.md` | researcher | hook-writer, analyst |
 | `library/idea-bank.md` | researcher creates rows; every employee updates status | everyone |
