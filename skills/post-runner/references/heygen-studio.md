@@ -17,6 +17,25 @@ Needs a `~~browser` connector. No connector, no render: say so and leave the doc
 each click rather than trusting a coordinate, and stop rather than guess if a control has
 moved. A wrong click here spends credits and puts the operator's face on the wrong words.
 
+### When the editor will not screenshot
+
+Studio's editor sometimes returns a blank frame to `computer {action: "screenshot"}` while
+its DOM loads normally — `read_page` shows the title field, the Portrait/Landscape toggle,
+the script box, Advanced Settings and Generate, and the pixels come back flat dark.
+
+**Do not abandon the render for this.** Work from the accessibility tree: `read_page
+{filter: "interactive"}` and `find` locate every control this sequence needs, and the
+values to set are all read from `brand/avatar-motion.md` rather than off the screen.
+Set them by ref, then Generate.
+
+**Say in the line that carries the finished clip which checks you could not make** —
+typically the Voice Engine and Model dropdowns and the scene-chip duration. That is the
+honest version, and it costs him one look at a clip he was going to watch anyway. Stopping
+before Generate because a screenshot was blank is not caution; it is handing back nothing
+when one render would have answered the question.
+
+Only stop if a control genuinely cannot be located in the tree.
+
 ## Before you start
 
 Read from `brand/avatar-motion.md`: look name, voice label, **Voice Engine**, **Model**,

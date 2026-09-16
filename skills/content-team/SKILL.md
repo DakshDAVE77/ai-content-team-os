@@ -16,9 +16,14 @@ and do not create a trigger.
 progress commentary. Run it, publish the artifact, return the three-line receipt at the
 bottom of this file.
 
-**Two places the run speaks, and only two:** the video-route question in Step 0, and the
-script approval the avatar route needs before it renders. Both are questions that change
-what gets built. Neither is narration, and nothing else earns a line.
+**One place the run speaks: the video-route question in Step 0.** It changes what gets
+built, so it is not narration. Nothing else earns a line.
+
+**The avatar route no longer stops for a script approval.** Set by the operator on
+16 September 2026 — picking the route is the go-ahead, the Reel renders during the run,
+and the finished clip is delivered into the chat alongside the console. He watches it
+there and says "post the video" when he wants it live. See `avatar` → *Gate 2 sits after
+the render*.
 
 Read `${CLAUDE_PLUGIN_ROOT}/references/memory-map.md` first and resolve `<root>`.
 
@@ -64,9 +69,10 @@ and get on with the run — this is the only thing the engine asks up front.
 Do not guess a folder, do not go looking in Downloads, and do not start the run around a
 Reel whose footage has not arrived. Clips are files he hands over; nothing else is a clip.
 
-**If he picks the avatar route**, say nothing further about it now. The script does not
-exist yet, and `avatar` Gate 2 collects its approval later — in chat, on the finished
-script, before the render. Picking a route is not approving words.
+**If he picks the avatar route**, say nothing further about it now. Picking it is the
+go-ahead: the Reel renders inside this run, without a second question, and the finished
+clip arrives in chat with the console. What it must not carry is set by `avatar`'s
+refusal list, which is about the words rather than about who approved them.
 
 **Check the browser before promising either.** Both routes are browser jobs. No
 `~~browser` connector means no render on either path: say so in one line, take the answer
@@ -147,13 +153,14 @@ builds or hands over accordingly:
 - **Clips route** — `videographer` writes the cut plan, then drives Higgsfield itself.
   Editing his own footage needs no gate beyond the ones already on the copy.
 - **Avatar route** — `videographer` writes the beat plan and hands the script to
-  `avatar`, which checks both gates, reads the locked ids and drives Studio through
+  `avatar`, which checks the refusal list, reads the locked ids and drives Studio through
   Generate. **`videographer` never renders his likeness itself**, in either product.
 
-**The avatar route pauses the run once.** Gate 2 needs him to read the exact words before
-they come out of his face, so the finished script is pasted in chat and the render waits
-for a yes. That is the one deliberate stop in this pipeline; everything else continues
-around it. No answer means the Reel is left `awaiting_render` and the slate still ships.
+**The avatar route does not pause the run.** It renders, and the finished clip is sent
+into the chat with `SendUserFile` next to the console. He watches it there; nothing is
+published until he says to post it. If the browser is unreachable or a script trips the
+refusal list, the Reel is left `awaiting_render` with the spec visible and the slate
+still ships.
 
 Twelve hooks written and scored, **three chosen — one per angle** (data-led,
 correction, observation). Those become variants A, B and C. Never one. Never one
@@ -205,10 +212,10 @@ Plus the artifact card, which the app renders on its own.
   artifact and in `content/<slug>.md`. The confidence numbers are on the console; do
   not repeat them in the receipt.
 
-  **One exception, and it is load-bearing: the avatar script.** On the avatar route the
-  full Reel script is pasted in chat and waits for a yes, because `avatar` Gate 2 is
-  exactly the requirement that a human read those words before they are spoken in his
-  face. A script he never saw is not an approved script. Paste it, wait, then render.
+  **One exception: the finished Reel itself.** On the avatar route the rendered clip is
+  delivered into the chat with `SendUserFile`, with one line naming the piece, the variant,
+  the duration and anything worth looking at. That is a file, not post copy, and it is the
+  surface Gate 2 now sits on — he watches it before anything is published.
 - **No commentary on the machinery** — not what was researched, not what was skipped,
   not what was held back. Those belong in the piece files and the run log.
 - **One `⚠` line at most.**

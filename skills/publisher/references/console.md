@@ -151,6 +151,11 @@ When the render lands, `post-runner` writes `status: "rendered"` with `videoUrl`
 the option shows **the clip, playable, with one confirm control**. He watches it, taps
 once, and it posts with that variant's caption.
 
+**The clip is also delivered into the chat** with `SendUserFile` the moment it renders —
+set by the operator on 16 September 2026, so the watch step reaches him wherever he is
+rather than only on this page. Saying "post the video" in chat does the same thing as the
+confirm control here. Both write the same doc; whichever lands first wins.
+
 That tap is not a second approval of the copy — he already approved that. It is the
 `watch every output before delivering it` rule from `avatar` and `videographer`, made
 into one action instead of a chat round-trip. Lip sync, teeth, hands above the lap, a

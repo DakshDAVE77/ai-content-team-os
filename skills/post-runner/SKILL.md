@@ -59,7 +59,8 @@ second.
 say "post"
 ├─ LinkedIn ──── compose ── submit ── URL        seconds
 ├─ X ─────────── compose ── submit ── URL        seconds
-└─ Instagram ─── render ── watch ── upload ── URL   minutes
+└─ Instagram ─── render ── clip into chat ─┐            minutes
+                                           └─ he says post ── upload ── URL
 ```
 
 **Each platform succeeds or fails on its own.** A failed render does not stop LinkedIn.
@@ -77,7 +78,7 @@ the Reel is often already cut or already rendered by the time he clicks POST.
 |---|---|
 | `status: "rendered"`, or a video file/URL on the doc | **Upload what is there.** Skip the whole render chain — go to step 5. Never re-render a piece that already has a clip: it is billed twice and can come back subtly different from the one that was approved and watched. |
 | Clip edit from the Higgsfield route | Same — the file exists. Upload it. Nothing in this chain applies. |
-| `status: "awaiting_render"` | The render did not happen during the run — missing script approval, or no browser. **Now the click is Gate 2**, and the chain below runs in full. |
+| `status: "awaiting_render"` | No clip yet — the run had no browser, or the piece was staged ahead of one. **The click is the go-ahead: render immediately and do not stop to ask anything else.** The chain below runs in full. |
 | No video at all — caption and cover only | Post the copy with the cover. Do not invent a Reel. |
 
 The rest of this chain is for `awaiting_render` only.
@@ -103,12 +104,24 @@ The rest of this chain is for `awaiting_render` only.
 
    No `~~browser` connector → stop, set `status: "awaiting_render"`, and surface the spec
    for a human. Do not fake this step.
-4. **Watch the finished clip end to end** against the out-of-character list. Confirm 9:16
-   and that the duration fits the slot.
-5. **Publish.** Prefer HeyGen's own Instagram publishing if the account exposes it — it
-   avoids a download and a re-encode. Establish that on the first run and record the
-   answer. Otherwise download the file and use the Instagram composer in `composers.md`;
-   the web uploader takes a local file, not a HeyGen URL.
+4. **Deliver the clip into the chat, and stop there.** Download the finished file and
+   send it with `SendUserFile`, captioned with the piece id, the variant and the duration.
+   Set `status: "rendered"` with the `videoUrl`. **Do not upload it to Instagram in the
+   same breath.**
+
+   This is the watch step and it belongs to him. The out-of-character list — hands above
+   the lap, teeth held across a phrase, a grin, a scene at the wrong speed, a mangled
+   term — is judged on the clip by the person whose face it is, not on a description of
+   it. If something on that list is visible, say which and roughly which second in the
+   one line that accompanies the file; **say it, do not withhold the clip over it.** The
+   call is his.
+
+   **Nothing re-renders on its own.** If he says it is wrong, set
+   `status: "awaiting_render"`, fix the named cause, and drive Studio once more.
+5. **Wait for him to say post, then publish.** "post the video", "post it", "yes post" —
+   that is the word. Prefer HeyGen's own Instagram publishing if the account exposes it;
+   otherwise download the file and use the Instagram composer in `composers.md`, which
+   takes a local file, not a HeyGen URL.
 6. **Use that variant's `caption`** — captions belong to their variant and are never
    borrowed across A/B/C. Then capture the live URL as below. **A HeyGen "published" state
    is not proof** — read the URL from Instagram itself.
@@ -116,6 +129,10 @@ The rest of this chain is for `awaiting_render` only.
 **Cost note, said once:** a render is billed by output seconds and starts on his click.
 Never start a second render for the same pieceId because the first looked slow — read
 the doc's status instead.
+
+**A render is not a post.** It is billed, and it is his face, but it is private and
+reversible. Publishing is neither. That asymmetry is why the render runs on a click and
+the upload waits for a word.
 
 ## 5. Post
 
@@ -195,7 +212,11 @@ Nothing else. No summary of the copy, no congratulations. Omit any section that 
 
 - Post anything the operator did not pick in the console.
 - Render his likeness on a click that was not his.
-- Post a Reel nobody watched.
+- Post a Reel nobody watched. He watches it in the chat; that is what the clip is sent
+  for.
+- **Stop an approved render to ask a question.** A POST click on an Instagram option is
+  the go-ahead. Render it, send it, and ask afterwards — the place to raise a doubt is
+  the line that carries the file, not a pause before Generate.
 - Hold a finished LinkedIn or X post back because the Reel is still rendering.
 - Start a second render for a pieceId that already has one in flight, **or one that
   already finished during the run.** Read the doc; the clip is usually already made.

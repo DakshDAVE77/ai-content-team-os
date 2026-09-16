@@ -92,22 +92,39 @@ Record `requestedBy` on every click. If an approver identity is recorded in
 viewer's click counts and the identity is captured for the audit trail. **Do not refuse on
 identity alone.**
 
-### When the run renders before the console exists
+### 🔴 Gate 2 sits after the render, not before it — set 16 September 2026
 
-Choosing the avatar route at the top of a run commissions a render **before** there is a
-console to click. The click cannot be the approval surface, so the chat is:
+The operator's own instruction, verbatim:
 
-**Paste the full script in chat, verbatim, and wait for a yes.** Nothing else counts —
-not "make the reel", not the route choice itself, not silence. He picked a *route*; Gate
-2 is about these exact words coming out of his face, and he has not read them yet.
+> *"when I click post for the instagram reel script for the AI avatar video it should
+> directly generate the video and do not stop at anything else and then show the video
+> here in chat and then if the user says that post the video it should be posted to the
+> respected instagram channels."*
 
-This is the one place `content-team`'s no-scripts-in-chat rule is deliberately broken,
-and breaking it is the point: the script has to be visible to be approved. Quote it in
-the piece file with the date and who approved it, exactly as for a click.
+So: **a POST click, or picking the avatar route at the top of a run, is the go-ahead.
+Render immediately. Do not pause to paste the script and wait for a second yes.**
 
-If he does not answer, the Reel is not rendered. Leave it `awaiting_render` with the spec
-visible and say so in the receipt. **Never render on an assumed yes** — an unanswered
-question is not an approval, and a render is billed and, worse, is his face.
+**The gate did not disappear; it moved to the far side of the render.** Nothing reaches a
+live account until he has watched the finished clip and said to post it. A render is
+billed and it is his face — but it is private, it is reversible, and it can be re-run. A
+post is none of those. The human read therefore happens on the clip, which is a better
+artefact to judge than a script: lip sync, hands, mouth and pace are not visible in text
+at all.
+
+The sequence is:
+
+```
+route chosen, or POST clicked  →  render  →  SendUserFile the clip into chat  →  stop
+                                                                                  ↓
+                                        he says "post the video"  →  upload  →  URL
+```
+
+What still binds **before** Generate, every time, is the **refusal list** below. Those
+are about what the words say, not about who has read them, and no click waives them. A
+script that trips one of them does not get rendered and he is told which.
+
+Quote the script in the piece file with the date, the render id and who clicked. If he
+says the clip is wrong, re-drive Studio once against the cause he names.
 
 Refuse, and say why, when asked to have the avatar deliver:
 
@@ -194,16 +211,26 @@ something he commissions, never something this skill runs to save a render.
    - **The motion block is pasted verbatim on every scene**, never shortened for a short
      one.
 
-   Then 9:16, preview each scene, and **click Generate once.** Renders take minutes —
-   read the page for completion rather than re-clicking. Every click bills output
-   seconds.
-6. **Watch it end to end before it goes anywhere.** Lip sync drift, a wrong emphasis, a
-   number said incorrectly, blink cadence, teeth showing, hands above the lap, a scene at
-   the wrong speed. The motion block names each of those as out of character — check
-   against it, not against taste. Confirm 9:16.
+   Then 9:16, preview each scene, **mute any browser-tab audio** — and **click Generate
+   once.** Renders take minutes — read the page for completion rather than re-clicking.
+   Every click bills output seconds.
+6. **Send it to him and let him watch it.** Download the finished file and deliver it
+   with `SendUserFile`, captioned with the piece id, the variant and the duration. Confirm
+   9:16 from the file. Then stop — the clip is the deliverable of this skill, and the
+   decision to publish is a separate word from him.
 
-   A defect here is not a re-render to be shrugged at. It is his face saying something
-   slightly wrong, and it is the most expensive thing this team can ship.
+   **Look at it yourself first, and say what you saw in one line — do not hold it back.**
+   Lip sync drift, a wrong emphasis, a number said incorrectly, blink cadence, hands above
+   the lap, a scene at the wrong speed, and above all the mouth: the target is closed lip,
+   lips together at rest, a soft closed-mouth smile on a warm line, and a faint tooth line
+   for about a second mid-scene is fine. A tooth row held across a phrase, a grin, or teeth
+   on an opening or closing frame is worth naming with roughly the second it happens.
+
+   **Name it; he decides.** Withholding a finished clip he asked for, to protect him from
+   a defect he can see in three seconds of watching, is the failure mode this step was
+   rewritten to remove. If he wants it re-rendered, fix the named cause — a motion block
+   that lost its mouth lines, an expression tag that reverted, `More expressive motion`
+   left on, a script with an exclamation mark in it — and drive Studio once more.
 7. **Record it** per Gate 3, with the HeyGen video id, so any clip traces back to the
    script it was approved against. `get_video` will give you the id, URL and duration.
 
@@ -213,8 +240,12 @@ something he commissions, never something this skill runs to save a render.
 - Choose a voice, engine or speed instead of reading `brand/avatar-motion.md`.
 - **Click Generate twice for the same piece** because the first looked slow. Read the
   page. Each click bills output seconds.
-- **Render on an assumed yes.** Picking the avatar route is not approving the script.
-  No answer means `awaiting_render`, not a render.
+- **Publish on an assumed yes.** A render is not a post. Nothing reaches a live account
+  until he has watched the clip and said to post it. Silence after a clip is sent is not
+  that word.
+- **Stop an approved render to ask a question.** A POST click, or the avatar route chosen
+  at the top of a run, is the go-ahead. Render, send, then raise anything you noticed in
+  the line that carries the file.
 - **Click Generate before reading the Voice Engine dropdown.** The least visible and most
   expensive mistake available here.
 - **Render through the API.** `create_video_from_avatar`, `create_video_from_studio`,
@@ -224,6 +255,13 @@ something he commissions, never something this skill runs to save a render.
   in `brand/avatar-motion.md` is compulsory. If it cannot be used, the answer is that the
   Reel is not rendered yet — not that it is rendered differently.
 - Shorten, summarise or reword the motion block because the script is short.
+- **Turn `More expressive motion` on, or reach for an Enthusiastic, Excited, Happy,
+  Joyful, Laughing, Playful or Energetic expression tag** because the script is upbeat.
+  The script gets calmer; the face does not get more expressive.
+- **Upload a clip with teeth held across a phrase, a grin, or teeth on an opening or
+  closing frame without saying so** — including "just this once because the post is time
+  sensitive". Send it, name the defect and the second it lands on, and let him choose
+  between posting it and a re-render.
 - Omit `engine: { type: "avatar_v" }` and assume the motion block applied anyway.
 - Omit `aspectRatio` and hand a landscape render into a Reel slot.
 - Call `clone_voice`, `design_voice`, `create_avatar_consent` or any avatar-creation tool.

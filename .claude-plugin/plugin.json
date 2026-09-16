@@ -1,8 +1,8 @@
 {
   "name": "ai-content-team-os",
   "displayName": "AI Content Team OS",
-  "version": "2.8.0",
-  "description": "One command that asks how today's Reel gets made - cut the clips you filmed in Higgsfield, or render an AI avatar video in HeyGen Studio - then mines your own Instagram comments for ideas, learns your voice from a corpus of your real posts, researches the day, and publishes one artifact holding nine ready-to-post options - three Instagram with the Reel, three LinkedIn, three X - each with a confidence score. Click POST on the one you want, say \"post\", and Claude drives your Chrome to publish it. Runs only when you run it; never on a schedule.",
+  "version": "2.10.0",
+  "description": "One command that asks how today's Reel gets made - cut the clips you filmed in Higgsfield, or render an AI avatar video in HeyGen Studio - then mines your Instagram comments for ideas, learns your voice from your real posts, researches the day, and publishes one artifact of nine ready-to-post options: three Instagram with the Reel, three LinkedIn, three X, each scored. Click POST, say \"post\", and Claude drives your Chrome to publish it. Runs only when you run it; never on a schedule.",
   "author": {
     "name": "Daksh Dave",
     "url": "https://github.com/DakshDAVE77"
