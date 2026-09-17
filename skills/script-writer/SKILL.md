@@ -9,9 +9,16 @@ Take one idea and one hook and produce copy the operator could post without
 editing. Every word is planned; nothing is left for them to "fill in" except real
 numbers only they have.
 
-Read `brand/voice-profile.md` **first** — it is measured from his own posts and it
-outranks the generic rules wherever the two disagree; its `## Where this overrides
-voice-rules.md` section is the list. Then
+Read `brand/voice-master.md` **first**. It is the operator's own supplied voice document
+distilled into the rules you apply while writing — register, post architecture, the seven
+hook formulas, the two story shapes, the CTA formulas, the vocabulary bands and the
+do-not list. It is the spec, and it outranks everything below it except a voice
+correction he made by hand.
+
+Then `brand/voice-profile.md`, which keeps authority over **counted numbers** — sentence
+medians, punctuation counts, per-platform first-person share, post length — and its
+`## Where this overrides voice-rules.md` list. Where the two describe the same thing, the
+voice master wins on shape and register, the profile wins on the count. Then
 `${CLAUDE_PLUGIN_ROOT}/references/voice-rules.md` — binding on everything the profile
 does not override —
 `${CLAUDE_PLUGIN_ROOT}/references/platform-specs.md` for limits, and
@@ -20,6 +27,12 @@ Read `brand/brand-config.md` for voice, proof and off-limits, `library/hooks.md`
 for the chosen hook, and `brand/offers.md` if the piece will carry a CTA.
 
 ## Method
+
+**0. Pick the register.** `brand/voice-master.md` → *Step 0*. Register B (Statesman) is
+the house style and the default; Register A (Operator) only where the brief is a
+challenge to industry orthodoxy, a product bet, or an internal-logic reveal. Write which
+one, and why, into the piece file. It is chosen once for the whole slate and never mixed
+inside a post.
 
 **1. Do not start writing.** First write the spine in four lines:
 
@@ -33,9 +46,17 @@ ask:      what the post has earned the right to request
 If `proof` is empty, stop and ask the operator for it. A piece with no proof is
 where invented specifics come from.
 
-**2. Write for one platform properly**, the primary one for this piece. Then adapt
-down the repurposing ladder in `platform-specs.md`. Adaptation means re-cutting for
-the surface, not pasting the same text with different line breaks.
+**2. Write for one platform properly**, the primary one for this piece — on a
+topic-driven run that is LinkedIn, because `brand/voice-master.md` records that LinkedIn
+is where the thesis lives even though Instagram is five times the audience. Then adapt
+across to Instagram and X. Adaptation means re-cutting for the surface, not pasting the
+same text with different line breaks: the argument collapses into a claim off LinkedIn,
+the language widens to Gujarati on Instagram, and X runs at his measured 125-character
+median rather than the 280 limit.
+
+**The whole slate carries one argument.** Nine options, one spine — see
+`references/variants.md` → `## One slate, nine options, one spine`. If the X draft is
+arguing something the LinkedIn draft is not, that is two slates.
 
 **3. Write three variants of it.** Every platform piece ships as three — A data-led,
 B correction, C observation — one argument, three ways in. This is not optional and it
@@ -46,7 +67,11 @@ first one; it defines what may vary and what may not.
 The spine from step 1 is written **once** and is identical in all three. If you find
 yourself writing a second spine, you have started a second piece.
 
-**4. Check against the measured profile, then the voice rules.** Hold the draft
+**4. Run the 60-second check** in `brand/voice-master.md` before anything is handed off —
+all seven lines, on every one of the nine options. It catches the register slip, the
+missing reversal, the two-CTA post and the sentence any developer could have written.
+
+**5. Check against the measured profile, then the voice rules.** Hold the draft
 against `brand/voice-profile.md` as numbers, not vibes: is the median sentence length
 his, is the person right for that platform, is the punctuation his, did you use a
 scaffold he actually uses. Then run the specificity test on every sentence: could this
@@ -162,6 +187,12 @@ builds the posting console where he picks.
   posts get better 30% shorter.
 - **Ignoring `## Voice corrections`.** Read it every time; it is the accumulated
   record of what the operator has already rejected.
+- **Mixing registers inside one post.** Contractions consistently present or consistently
+  absent. The mix is the most common way a fake reads false.
+- **Writing a second argument for a second surface.** One topic, one spine, nine options.
+- **Using `brand/voice-master.md` to write an Instagram caption in English.** That
+  document says outright that it could not establish his Instagram caption voice. The
+  Gujarati rule in the brand config governs that surface.
 - **"Improving" his voice into the generic one.** If the profile measures short even
   sentences and you add a long clause for variety because a style rule says to, you
   have made it sound less like him. The measurement wins.

@@ -32,13 +32,15 @@ only when a step needs a cloud-only tool (image rendering, a skill's script).
 | Path under `<root>` | Owner (writes) | Readers |
 |---|---|---|
 | `brand/brand-config.md` | brand-setup | everyone |
+| `brand/voice-master.md` | **the operator** — distilled from the voice document he supplied | **every writing employee, first** |
 | `brand/voice-profile.md` | brand-setup, from `sources/corpus/` | every writing employee |
 | `brand/proof.md` | brand-setup | everyone |
 | `brand/offers.md` | brand-setup | script-writer, publisher |
 | `brand/avatar-authorization.md` | the operator | avatar — optional, scope only |
 | `brand/avatar-motion.md` | the operator | avatar, videographer, script-writer |
 | `brand/reel-style.md` | the operator, drafted on the first Higgsfield run | videographer |
-| `research/trends-YYYY-MM-DD.md` | researcher | manager, hook-writer |
+| `research/topic-<slug>-YYYY-MM-DD.md` | researcher, in topic mode | manager, hook-writer, script-writer |
+| `research/trends-YYYY-MM-DD.md` | researcher, in discovery mode | manager, hook-writer |
 | `research/competitors.md` | researcher | hook-writer, analyst |
 | `library/idea-bank.md` | researcher creates rows; every employee updates status | everyone |
 | `library/hooks.md` | hook-writer | script-writer, analyst |
@@ -220,5 +222,9 @@ variants: A / B / C — full text, one per angle
 - **Write every cursor after its rows, never before.**
 - **If `brand/brand-config.md` does not exist, stop** and run `brand-setup`.
 - **Read the voice precedence chain in the order given in `voice-corpus.md`.** Voice
-  corrections beat the measured profile, which beats the onboarding profile, which
-  beats `voice-rules.md`.
+  corrections beat `brand/voice-master.md`, which beats the measured profile on shape
+  and register — the profile still wins on counted numbers — which beats the onboarding
+  profile, which beats `voice-rules.md`.
+- **`runs/YYYY-MM-DD.md` records the topic** the operator gave, the register written,
+  and the video route chosen. A run without a topic in its log is a run nobody can
+  reconstruct.

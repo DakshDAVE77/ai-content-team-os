@@ -8,6 +8,48 @@ across all three** — only the way in changes. That is what makes the choice sa
 he picks is already on-strategy, already inside the proof ledger, already the right pillar.
 He is choosing a way in, not re-deciding the argument.
 
+## One slate, nine options, one spine
+
+The engine runs on **a topic he names**, and a topic produces exactly one argument. So
+the nine options on the console are not nine pieces — they are:
+
+```
+                        one topic
+                            |
+                       one argument          <- claim, proof, turn, ask: written once
+                            |
+        +-------------------+-------------------+
+     Instagram           LinkedIn               X          <- surface adaptation
+        |                    |                  |
+    A   B   C            A   B   C          A   B   C      <- angle
+```
+
+**The spine is written once and is identical in all nine.** Same claim, same proof, same
+number, same ask. Two things vary and nothing else: the **angle** (A, B, C) and the
+**surface adaptation**.
+
+- **Angle** is shared across the three platforms. Variant B on Instagram and variant B on
+  LinkedIn open on the same assumption that broke — in different words, at different
+  lengths, in different languages, but on the same turn.
+- **Surface adaptation** is a genuine re-cut, never one text with different line breaks.
+  LinkedIn carries the thesis in full, 80–350 words. X is the observer's compression —
+  his measured median is 125 characters, not 280. Instagram is the Gujarati spoken
+  version with its own caption and its own Reel script per variant.
+
+If the LinkedIn slate argues one thing and the X slate argues another, the run has built
+two slates and shipped them as one. Stop and take the first.
+
+## Register — chosen once, per slate
+
+`brand/voice-master.md` → *Step 0* splits his voice into **Register B (Statesman)**, the
+current house style, and **Register A (Operator)**, the archive. The register is picked
+once for the whole slate, written into the piece file, and applied to all nine options.
+
+**Never mix the two inside one post.** Contractions consistently present, or consistently
+absent — the mix is the single fastest way to write something that reads false. And
+never split the register across variants: A in Register A and B in Register B is not
+three doors into one argument, it is two different men.
+
 ## The three angles
 
 They are not invented. `brand/brand-config.md` says he opens on **"an assumption he held,
@@ -65,7 +107,10 @@ are Builder. If all three read warm and curious, two of them are wrong.
   If two variants read nearly the same, cut one and rewrite it properly.
 - **Instagram** — three Reel scripts, each with its own spoken script, its own on-screen
   text plan, and **its own caption**. The caption is not shared across variants: it opens
-  by sharpening that variant's hook. See `formats.md` → Instagram Reel script.
+  by sharpening that variant's hook. See `formats.md` → Instagram Reel script. Gujarati
+  with English code-switching per `brand/brand-config.md` → `## Language`, budgeted in
+  syllables. `brand/voice-master.md` does **not** establish an Instagram caption voice —
+  it says so itself — so the brand config governs this surface, not the voice master.
 - **Pulse** — three titles and three standfirsts, one body. A 1,400-word article is not
   written three times; the way in is what gets chosen, and the body follows the pick.
 
@@ -91,9 +136,13 @@ confidence = round( 100 x (hook_total / 25) x angle_factor x pillar_factor )
 
 | term | where it comes from |
 |---|---|
-| `hook_total` | the hook-writer's five-axis score for that variant's hook, 5-25 |
+| `hook_total` | the hook-writer's five-axis score for that variant's hook, 5-25. **Scored per surface**, because the same angle scores differently as a 3-second spoken line and as a 140-character LinkedIn opener. |
 | `angle_factor` | this angle's median follow rate divided by his overall median for that format, from `performance/log.md`, clamped 0.80-1.25 |
 | `pillar_factor` | this pillar's median follow rate divided by the same overall median, same clamp |
+
+Both factors are read **per surface**, so the same angle legitimately carries three
+different confidence numbers across the three platforms. That is not an inconsistency to
+smooth out — it is the log saying the correction angle works on LinkedIn and not yet on X.
 
 **Both factors are exactly 1.00 until there are six posts on that surface.** Under six
 is noise, and multiplying by noise produces a confident wrong number, which is worse

@@ -111,15 +111,24 @@ per-line and needs its measurement. "His voice is different" is not an override.
 
 ## The precedence chain
 
-Four things describe the voice. When they disagree, higher wins, and every writing
+Five things describe the voice. When they disagree, higher wins, and every writing
 employee reads them in this order:
 
 1. **`brand/brand-config.md` → `## Voice corrections`** — what the operator personally
    rejected and rewrote. Nothing outranks a correction they made by hand.
-2. **`brand/voice-profile.md`** — measured from their real corpus.
-3. **`brand/brand-config.md` → `## Voice profile` / `## Their words`** — what they said
+2. **`brand/voice-master.md`** — the voice document the operator supplied, distilled to
+   the rules a writer applies. **The writing spec**: register, post architecture, hook
+   formulas, story shapes, CTA formulas, vocabulary, do-not list.
+3. **`brand/voice-profile.md`** — measured from their real corpus. It outranks the
+   voice master **on counted numbers only**; on shape and register the voice master wins.
+4. **`brand/brand-config.md` → `## Voice profile` / `## Their words`** — what they said
    about themselves at onboarding.
-4. **`references/voice-rules.md`** — the floor.
+5. **`references/voice-rules.md`** — the floor.
+
+**A supplied voice document is not a "stated voice" guideline.** The rule below — posts
+beat guidelines — is about a doctrine document written *about* an aspiration. A voice
+master distilled from a count of his real posts is demonstrated voice in compressed
+form, and it sits above the profile on everything except the counts themselves.
 
 ## Writing the profile
 

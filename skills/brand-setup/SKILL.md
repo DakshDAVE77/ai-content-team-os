@@ -57,6 +57,27 @@ much that it is worth asking twice. If they do, have them drop it into
 `sources/corpus/` and derive the profile from it — see the next section. Pasted
 samples become the fallback, not the source.
 
+## Ask for a voice document before deriving anything
+
+**Ask once, plainly: has anyone already written a voice or communication document about
+them?** An agency deck, an internal style guide, a commissioned analysis of their own
+posts. If one exists it is the single highest-value input here, and an operator will not
+think to hand it over unless asked by name.
+
+Where one arrives, distil it into `brand/voice-master.md` — **the operational half
+only**: the register split if it has one, the post architecture, the hook formulas, the
+story shapes, the CTA formulas, the vocabulary bands, and the do-not list. Leave the
+analysis behind in the source document. A writer needs the rules, not the reasoning, and
+a 60,000-character document nobody reads at write time is worth nothing.
+
+`brand/voice-master.md` sits **second** in the precedence chain, above the measured
+profile on shape and register and below it on counted numbers. The chain is in
+`${CLAUDE_PLUGIN_ROOT}/references/voice-corpus.md`.
+
+**Record what the document does not establish**, in the file itself. A voice document
+built from LinkedIn says nothing about Instagram captions or spoken delivery, and a
+writer who does not know that will use it for both.
+
 ## Derive the voice profile
 
 **If `sources/corpus/` has files, derive from those, not from the pasted samples.**

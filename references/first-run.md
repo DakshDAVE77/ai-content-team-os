@@ -12,6 +12,7 @@ checklist any employee uses to tell whether it has been run.
 | Path | Created by | Without it |
 |---|---|---|
 | `brand/brand-config.md` | brand-setup interview | **Hard stop.** Every employee reads it first. Generic content otherwise. |
+| `brand/voice-master.md` | brand-setup, from a voice document the operator supplies — **optional, and the strongest input here when it exists** | Register, post architecture, hook formulas and the do-not list are all inferred per run instead of read. Drafts drift between registers. |
 | `brand/voice-profile.md` | brand-setup, from `sources/corpus/` | Voice comes from two or three pasted samples instead of their whole body of work. Drafts read generic. |
 | `brand/proof.md` | brand-setup | Writers invent numbers. This is the only list of assertable facts. |
 | `brand/offers.md` | brand-setup, if they have an offer | CTAs get invented |

@@ -8,7 +8,9 @@ three X. Same URL every run. It is the only deliverable the operator reads.
 **Nothing on the page that is not the content — plus one number.** No rationale, no
 "why this works", no sources, no metrics, no pillar or format labels, no strategy
 notes, no run summary, no instructions, no counts, no dates beyond the one in the
-header, no footer text beyond what a locked variant must say. The page is:
+header, no footer text beyond what a locked variant must say. **Not the topic either** —
+he named it, he does not need it read back to him on the page, and a topic header is the
+first step back toward a dashboard. The page is:
 
 ```
 <date>

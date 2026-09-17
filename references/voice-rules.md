@@ -5,22 +5,28 @@ social copy has a recognisable smell, and that smell costs reach and credibility
 
 ## Read the brand first — this file is the floor, not the ceiling
 
-Four things describe the voice, and when they disagree **higher wins**:
+Five things describe the voice, and when they disagree **higher wins**:
 
 1. `brand/brand-config.md` → `## Voice corrections` — what the operator personally
    rejected and rewrote by hand.
-2. `brand/voice-profile.md` — measured from their real posts in `sources/corpus/`.
-   See `${CLAUDE_PLUGIN_ROOT}/references/voice-corpus.md`.
-3. `brand/brand-config.md` → `## Voice profile` / `## Their words` — what they said
+2. `brand/voice-master.md` — the voice document the operator supplied, distilled into
+   the rules a writer applies: register, post architecture, hook formulas, story shapes,
+   CTA formulas, vocabulary and the do-not list. **This is the writing spec.**
+3. `brand/voice-profile.md` — measured from their real posts in `sources/corpus/`.
+   See `${CLAUDE_PLUGIN_ROOT}/references/voice-corpus.md`. It outranks the voice master
+   **on counted numbers only** — sentence-length medians, punctuation counts, per-platform
+   first-person share, post length. On shape and register, the voice master wins.
+4. `brand/brand-config.md` → `## Voice profile` / `## Their words` — what they said
    about themselves at onboarding.
-4. **This file.**
+5. **This file.**
 
 Everything below is built from what generic AI social copy gets wrong. It is a good
 floor and it is not a description of any particular person. A real corpus **will**
 contradict parts of it, in specific and measured ways, and `brand/voice-profile.md`
 carries those contradictions under `## Where this overrides voice-rules.md`.
 
-**Read that section before you apply anything here.** A measured override beats this
+**Read `brand/voice-master.md` first, then that section.** The voice master is the
+operator's own supplied document and it is the spec; a measured override beats this
 file every time. What the corpus does not contradict still binds — the banned phrases,
 the numbers discipline, and the specificity test especially.
 

@@ -1,6 +1,6 @@
 ---
 name: researcher
-description: Find content opportunities for the operator - live trends, what competitors are winning with, viral references worth borrowing, and untapped angles - then fill the idea bank. Use when the user says find trends, what should I post about, research my niche, what are competitors doing, find me ideas, fill the idea bank, what's working right now, or find viral posts in my space.
+description: Research a topic the operator named, or find content opportunities when he has not - live trends, what competitors are winning with, viral references worth borrowing, and untapped angles. Use when the user says research this topic, find evidence for, find trends, what should I post about, research my niche, what are competitors doing, find me ideas, fill the idea bank, what's working right now, or find viral posts in my space.
 ---
 
 # The Researcher
@@ -11,6 +11,83 @@ can actually make, not a trend report nobody acts on.
 Read `${CLAUDE_PLUGIN_ROOT}/references/memory-map.md`. Read
 `brand/brand-config.md` for pillars, audience and off-limits topics, and
 `performance/patterns.md` for what has already worked for this operator.
+
+## Two modes, and the mode is decided by whether a topic exists
+
+| | **Topic mode** | **Discovery mode** |
+|---|---|---|
+| Triggered by | `content-team` passing today's topic, or him naming one | no topic — he ran this skill directly to fill the bank |
+| The job | **evidence for a fixed subject** | **finding subjects worth posting about** |
+| Browser work | none | comment mining, then the live listening scan |
+| Output | `research/topic-<slug>-YYYY-MM-DD.md`, one idea-bank row | trend report, scan file, many idea-bank rows |
+
+**In topic mode, the topic is fixed and is not up for renegotiation.** Do not return a
+better idea you found on the way. If the research genuinely undermines the topic — the
+premise is wrong, the number everyone repeats is wrong — that is the finding, say it
+plainly at the top, and it becomes the run's one `⚠` line. That is not drifting off
+topic; it *is* the topic, corrected.
+
+**Skip the browser entirely in topic mode.** Mining his comments and scanning live exist
+to find a subject, and he has supplied one. The run needs the browser for the render.
+
+### Topic mode — the method
+
+Run four searches against the topic, one at a time, and stop when the argument has
+standing rather than when the searches run out:
+
+1. **What is actually true about it now** — the topic plus the current year. Primary
+   reports, regulator filings, registration and absorption data, company disclosures.
+2. **The received view** — what the industry repeats about this topic. Name it exactly,
+   because `brand/voice-master.md` → *The one move* denies it and replaces it, and a
+   vague received view produces a vague post.
+3. **The number** — one specific, checkable figure the argument can stand on. Registration
+   counts, attendee counts, budget bands, yields, absorption rates. Indian figures in
+   lakh, crore, ₹, never converted.
+4. **The counter-case** — the strongest argument against the position he is likely to
+   take. Include it whether or not it changes the slate; a post that has not met its
+   objection reads thin.
+
+Then cross-check against `brand/proof.md`: which part of this can he speak to from his
+own experience, and which part is a claim he would be borrowing? Say which, explicitly.
+That line decides what `script-writer` may put in first person.
+
+**Fetch the actual pages for anything you intend to cite.** A search snippet is a lead,
+not a source. When two sources disagree, record both and say so — never average them,
+never silently take the larger.
+
+Write `research/topic-<slug>-YYYY-MM-DD.md`:
+
+```markdown
+# Topic research — <topic verbatim> — YYYY-MM-DD
+pillar: <nearest pillar> · requested by: operator
+
+## What is true
+| finding | figure | source (URL) | primary? |
+|---|---|---|---|
+
+## The received view
+<the industry's default assumption about this topic, stated in its own words>
+
+## The number the argument stands on
+<one figure, its source, and what it is not>
+
+## The counter-case
+<the strongest objection, and whether the slate survives it>
+
+## What he can speak to
+| part of the argument | his standing | from |
+|---|---|---|
+
+## Unverified
+<anything that could not be traced to a primary source — and is therefore not postable>
+```
+
+Append **one** row to `library/idea-bank.md` at status `new`, source `operator`, with
+the topic verbatim in the title cell. Topic mode produces one row, not ten.
+
+Everything below is **discovery mode**.
+
+---
 
 ## His own comments first, then listen, then search
 
@@ -162,6 +239,11 @@ Then hand off: the ideas are ready for `hook-writer`.
 
 ## Failure modes
 
+- **Topic mode: returning a different topic.** He named the subject. A better idea found
+  on the way is an idea-bank row for another day, not today's slate.
+- **Topic mode: reaching for the browser.** No comment mining, no live scan. The browser
+  is needed for the render, and the subject is already decided.
+- **Topic mode: ten rows instead of one.** One topic, one row.
 - **Reporting trends instead of ideas.** "Short-form video is growing" is not
   actionable. Every finding must end in an angle this operator can post.
 - **Citing what you remember.** Search, fetch, then cite.

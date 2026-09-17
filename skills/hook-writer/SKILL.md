@@ -8,10 +8,20 @@ description: Write and score the opening lines that stop the scroll - hooks for 
 Produce the first line. It decides whether the rest of the work gets seen at all,
 so it gets its own employee and its own scoring pass.
 
-Read `${CLAUDE_PLUGIN_ROOT}/references/voice-rules.md` and
+Read `brand/voice-master.md` first — its **seven hook formulas** are his, taken from his
+own posts, and they outrank the general formula list in
+`${CLAUDE_PLUGIN_ROOT}/skills/hook-writer/references/hook-formulas.md`. Its architecture
+section also fixes what a hook has to do here: put the tension inside the first fifteen
+words, as a reversal, a bare number, or a question that undercuts a comfortable
+assumption.
+
+Then `${CLAUDE_PLUGIN_ROOT}/references/voice-rules.md` and
 `${CLAUDE_PLUGIN_ROOT}/references/memory-map.md`. Read `brand/brand-config.md` for
 voice and proof, `brand/voice-profile.md` for how he measurably opens posts, and
 `performance/patterns.md` for which hook shapes have already worked for this operator.
+
+**Hook formula 5** — "I don't want to `[X]`. I think `[X]` is the mistake." — is
+**Register A only**. Do not reach for it on a Register B slate, whatever it scores.
 
 **The profile's `## Openings` section beats the formula list.** It is counted from his
 real posts — which opening words and shapes he actually uses, per platform. A formula
@@ -28,9 +38,14 @@ sentence what is actually surprising, costly, or contrarian about this idea — 
 the operator's real experience. Everything else is decoration on this. If nothing
 here is surprising, say so and send the idea back rather than dressing it up.
 
-**2. Write twelve.** Use at least six different formulas from
-`references/hook-formulas.md`. Twelve is the floor because the first four are
-always the obvious ones.
+**2. Write twelve.** Use at least four of the seven formulas in
+`brand/voice-master.md` → *Hook formulas*, then reach into
+`references/hook-formulas.md` for the rest. Twelve is the floor because the first four
+are always the obvious ones.
+
+**Twelve against the one argument, not twelve per surface.** A topic-driven run has one
+argument; you are finding the three best ways into it, and each one is then adapted to
+each of the three surfaces in step 5.
 
 **3. Score each one.** See the rubric below. Score honestly — a generous score on
 a weak hook wastes the whole downstream pipeline.
@@ -56,7 +71,9 @@ Score each of the three honestly and independently. Nudging a total to flatter o
 protect a variant now changes a number the operator reads next to a POST button, which
 is the one place a generous score does real damage.
 
-**5. Adapt per platform.** The chosen hook is not the same string everywhere:
+**5. Adapt per platform — all three angles, all three surfaces, nine strings.** The
+chosen hook is not the same string everywhere, and the angle is what travels, not the
+wording:
 
 | surface | constraint |
 |---|---|
