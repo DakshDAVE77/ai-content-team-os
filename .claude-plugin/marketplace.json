@@ -1,7 +1,7 @@
 {
   "name": "cs-content",
   "description": "The marketplace for the AI Content Team OS plugin.",
-  "version": "2.10.0",
+  "version": "3.1.1",
   "owner": {
     "name": "Daksh Dave",
     "url": "https://github.com/DakshDAVE77"
@@ -10,9 +10,9 @@
     {
       "name": "ai-content-team-os",
       "displayName": "AI Content Team OS",
-      "source": "./",
-      "version": "2.10.0",
-      "description": "One command that asks how today's Reel gets made - cut the clips you filmed in Higgsfield, or render an AI avatar video in HeyGen Studio - then mines your Instagram comments for ideas, learns your voice from your real posts, researches the day, and publishes one artifact of nine ready-to-post options: three Instagram with the Reel, three LinkedIn, three X, each scored. Click POST, say \"post\", and Claude drives your Chrome to publish it. Runs only when you run it; never on a schedule.",
+      "source": "./plugins/ai-content-team-os",
+      "version": "3.1.1",
+      "description": "Brand setup, research, writing and carousel/video workflows for Instagram, LinkedIn and X. Select exact content in the local console, then say post in chat to publish using the Browser plugin. Account sign-in and media capabilities are required.",
       "author": {
         "name": "Daksh Dave",
         "url": "https://github.com/DakshDAVE77"
@@ -26,22 +26,36 @@
         "social-media",
         "instagram",
         "linkedin",
+        "x",
         "video",
         "avatar",
-        "browser-automation"
+        "heygen",
+        "higgsfield"
       ],
       "keywords": [
+        "analytics",
+        "avatar",
+        "carousel",
+        "confidence-scoring",
         "content",
         "creator",
+        "follower-targets",
         "founder",
-        "instagram",
-        "linkedin",
-        "x",
-        "reels",
         "heygen",
         "higgsfield",
+        "instagram",
+        "linkedin",
+        "posting",
+        "posting-console",
+        "publishing",
+        "register",
+        "social-media",
+        "topic-driven",
+        "variants",
+        "video",
         "voice",
-        "posting"
+        "voice-document",
+        "x"
       ]
     }
   ]

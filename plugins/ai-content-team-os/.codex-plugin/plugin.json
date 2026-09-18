@@ -1,0 +1,54 @@
+{
+  "name": "ai-content-team-os",
+  "version": "3.1.1",
+  "description": "Brand setup, research, writing and carousel/video workflows for Instagram, LinkedIn and X. Select exact content in the local console, then say post in chat to publish using the Browser plugin. Account sign-in and media capabilities are required.",
+  "author": {
+    "name": "Daksh Dave",
+    "url": "https://github.com/DakshDAVE77"
+  },
+  "homepage": "https://github.com/DakshDAVE77/ai-content-team-os#readme",
+  "repository": "https://github.com/DakshDAVE77/ai-content-team-os",
+  "license": "MIT",
+  "keywords": [
+    "analytics",
+    "avatar",
+    "carousel",
+    "confidence-scoring",
+    "content",
+    "creator",
+    "follower-targets",
+    "founder",
+    "heygen",
+    "higgsfield",
+    "instagram",
+    "linkedin",
+    "posting",
+    "posting-console",
+    "publishing",
+    "register",
+    "social-media",
+    "topic-driven",
+    "variants",
+    "video",
+    "voice",
+    "voice-document",
+    "x"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AI Content Team OS",
+    "shortDescription": "Topic-driven content for Instagram, LinkedIn and X.",
+    "longDescription": "Twelve content skills with brand memory, research, writing, visuals, video workflows, publishing and analytics.",
+    "developerName": "Daksh Dave",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Set up my brand.",
+      "Run the content engine — topic: …",
+      "Content status."
+    ]
+  }
+}

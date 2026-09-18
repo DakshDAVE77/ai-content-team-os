@@ -3,3 +3,9 @@ Thumbs.db
 *.zip
 __pycache__/
 *.pyc
+
+# runtime dirs named in CODEX-INTEGRATION.md - never commit these
+ContentEngine/
+outputs/
+work/
+.venv/
